@@ -1,0 +1,11 @@
+wlm_mode,service_class_id,service_class_category,queue_name,slots,query_working_memory_mb_per_slot,cluster_memory_pct,query_timeout,concurrency_scaling,queue_priority,qmr_rule_count,is_queue_evictable,qmr_rule,condition
+auto,100,Auto WLM,wlm_BI_Applications,auto,auto,auto,0,auto,Normal,2,Y,"Execution_time:[abort] query_execution_time>7200,Row_Count_Limit:[abort] return_row_count>100000000","(user group: wlm_bi_applications), (user group: wlm_bi_applications)"
+auto,101,Auto WLM,wlm_ETL_Application,auto,auto,auto,0,auto,High,1,Y,ETL_Execution_Time:[abort] query_execution_time>86399,(user group: wlm_etl_applications)
+auto,102,Auto WLM,wlm_Analysts,auto,auto,auto,0,auto,Normal,4,Y,"Analyst_Limit_Memory_to_disk:[log] query_temp_blocks_to_disk>1000,Analyst_Limit_Query_time:[abort] query_execution_time>14400,Analyst_Limit_Rowcount_Return:[abort] return_row_count>1000000,Analyst_Limit_Rows_Joined:[log] join_row_count>100000000000","(user group: wlm_analysts), (user group: wlm_analysts), (user group: wlm_analysts), (user group: wlm_analysts)"
+auto,103,Auto WLM,wlm_DBA,auto,auto,auto,0,auto,Highest,1,Y,DBA_Limit_Query_Execution_Time:[abort] query_execution_time>21600,(user group: wlm_dba)
+auto,104,Auto WLM,wlm_development_analysts,auto,auto,auto,0,auto,Normal,2,Y,"dev_A_Limit_Rowcount_Return:[abort] return_row_count>1000000,dev_Analyst_Limit_Query_time:[abort] query_execution_time>14400","(user group: wlm_development_analysts), (user group: wlm_development_analysts)"
+auto,105,Auto WLM,wlm_backfill,auto,auto,auto,0,auto,Normal,0,N,,"(query group: wlm_backfill), (user group: wlm_backfill)"
+auto,107,Auto WLM,Default queue,auto,auto,auto,0,auto,Normal,3,Y,"Default_Limit_Query_Execution:[abort] query_execution_time>10800,Return_row_count_abort:[abort] return_row_count>10000000,return_row_count_deprioritzie:[change_query_priority] return_row_count>1000000","(querytype: any), (querytype: any), (querytype: any)"
+auto,14,SQA,Short query queue,6,264,auto,0,off,Normal,0,N,,
+auto,15,Redshift Maintenance,Service class for vacuum/analyze,0,0,auto,0,off,Normal,0,N,,(system user) and (query group: maintenance)
+auto,5,Superuser,Service class for super user,1,3701,auto,0,off,Normal,0,N,,(super user) and (query group: superuser)

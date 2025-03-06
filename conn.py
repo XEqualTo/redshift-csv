@@ -2,11 +2,11 @@ import psycopg2
 import csv
 import json
 
-HOST = "XXXXX"
-PORT = "XXX" 
-DATABASE = "XXX"
-USER = "XXX"
-PASSWORD = "XXXX"
+HOST = "XXXXXXXX"
+PORT = "XXXXXXX" 
+DATABASE = "XXXX"
+USER = "XXXXXXXX"
+PASSWORD = "XXXXXXXXXX"
 
 json_filename = "./config.json"
 try:

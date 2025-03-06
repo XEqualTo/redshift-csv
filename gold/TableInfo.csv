@@ -1,0 +1,874 @@
+dbname,namespace,table_name,encoded,diststyle,sortkey1,max_varchar,sortkey1_enc,sortkey_num,unsorted,stats_off,tbl_rows,skew_rows,estimated_visible_rows,num_rows_marked_for_deletion,pct_rows_marked_for_deletion,vacuum_sort_benefit,vacuum_run_type,is_last_vacuum_recluster,last_vacuumed_date,days_since_last_vacuumed,query_count,table_recommendation_count,encoded_column_count,column_count,encoded_column_pct,encoded_sortkey_count,distkey_column_count,large_column_size_count,sort_key_alert_sample_query,sort_key_alert_query_count,stats_alert_sample_query,stats_alert_query_count,nl_alert_sample_query,nl_alert_query_count,distributed_alert_sample_query,distributed_alert_query_count,distributed_alert_sample_query,broadcasted_alert_query_count,deleted_alert_sample_query,deleted_alert_query_count
+dw,analytics,udm_engagement_cohorts_v2,Y,KEY(user_id),date_id,500,none,1,65.46,100.00,598183318551,1.00,597216264192,967054359,0.0016,0.00,,,,,284,0,16,17,94.1176,0,1,0,699609380,12,,0,,0,,0,,0,,0
+dw,analytics,firehose_events_enriched,Y,KEY(user_id),event_date_id,2048,none,4,82.05,60.80,114019903798,1.12,112440287232,1579616566,0.0138,7.00,,,,,767,0,105,110,95.4545,0,1,6,703351926,218,,0,,0,703252919,75,,0,,0
+dw,fact,event_client_mat_item_cut_pass_end,"Y, AUTO(ENCODE)",AUTO(KEY(event_id_hash)),AUTO(SORTKEY),255,,0,,4.71,45807843448,1.00,45095923712,711919736,0.0155,,,,,,445,0,54,56,96.4285,0,1,0,703389391,186,,0,,0,703356013,84,703143935,3,,0
+dw,analytics,cut_session_master_v2,Y,KEY(user_id),event_timestamp,65535,none,1,0.00,0.00,44088424157,1.01,44088422400,1757,0.0000,0.00,Manual,Y,2025-02-28,6,2,0,55,58,94.8275,0,1,39,,0,,0,,0,,0,,0,,0
+dw,fact,user_daily_metrics,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),evaluation_date_id,255,none,1,9.12,77.50,32531520295,1.00,30740834304,1790685991,0.0550,2.00,Automatic,N,2025-03-06,0,331,0,29,38,76.3157,0,1,0,703356754,34,,0,,0,703352423,17,,0,,0
+dw,fact,udm_visitors_tmp,"Y, AUTO(ENCODE)",KEY(user_id),evaluation_date,65535,none,1,0.00,0.00,30188844776,1.00,30188845056,0,0.0000,0.00,,,,,7,0,9,16,56.2500,0,1,1,699479790,5,,0,,0,,0,,0,,0
+dw,cricut_dw,fact_event_client_cut_mat_item_cut_pass_end,Y,AUTO(KEY(user_id)),AUTO(SORTKEY(event_timestamp)),500,none,5,5.49,11.72,28161294452,1.01,27050971136,1110323316,0.0394,0.00,,,,,141,0,31,33,93.9393,3,1,0,699131248,1,,0,,0,699883692,1,,0,,0
+dw,stage,users_daily,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,25938564988,,25938565120,0,0.0000,,,,,,1,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,user_daily_metrics_registrations,Y,KEY(user_id),user_id,0,az64,1,6.05,11.37,19543123459,1.00,19105273856,437849603,0.0224,0.00,,,,,1,0,1,3,33.3333,1,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,udm_registrations,"Y, AUTO(ENCODE)",KEY(user_id),evaluation_date,255,none,1,100.00,100.00,19289369433,1.00,19289368576,857,0.0000,0.00,,,,,13,0,8,13,61.5384,0,1,0,700257817,2,,0,,0,700257817,2,,0,,0
+dw,stage,udm_registrations_daily_users,"Y, AUTO(ENCODE)",KEY(user_id),evaluation_date,0,none,1,0.00,0.00,19289369433,1.00,19289368576,857,0.0000,0.00,,,,,5,0,1,3,33.3333,0,1,0,703122642,21,,0,,0,,0,,0,,0
+dw,stage,udm_registrations_unique_users,"Y, AUTO(ENCODE)",KEY(user_id),date_id,0,none,1,0.00,0.00,19233231343,1.00,19233230848,495,0.0000,0.00,,,,,5,0,1,3,33.3333,0,1,0,703163618,21,,0,,0,,0,,0,,0
+dw,analytics,user_ds_product_attributes,Y,KEY(user_id),date_id,256,none,1,8.86,90.35,17515454190,1.00,16626673664,888780526,0.0507,4.00,Automatic,N,2025-03-01,5,259,0,10,11,90.9090,0,1,0,702891208,6,,0,,0,703365288,33,,0,,0
+dw,fact,udm_registrations_bkp,"Y, AUTO(ENCODE)",KEY(user_id),AUTO(SORTKEY(user_id)),255,none,2,0.00,0.00,16145289944,1.00,16145290240,0,0.0000,0.00,,,,,1,0,8,13,61.5384,1,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_master_fact,Y,KEY(user_id),event_date_id,12297,none,2,6.85,26.72,16067948051,1.02,15409861632,658086419,0.0409,0.00,Automatic,N,2025-03-05,1,216,0,41,46,89.1304,0,1,7,703075925,17,,0,,0,703076839,11,,0,,0
+dw,analytics,project_master_fact,Y,KEY(user_id),event_date_id,12297,none,2,6.85,26.72,16067948051,1.02,15409861632,658086419,0.0409,0.00,Manual,Y,2025-02-28,6,216,0,41,46,89.1304,0,1,7,703075925,17,,0,,0,703076839,11,,0,,0
+dw,analytics,user_daily_metrics_engagement,Y,KEY(user_id),user_id,0,az64,2,7.57,39.89,16000414381,1.00,15301638144,698776237,0.0436,0.00,,,,,4,0,2,3,66.6666,1,1,0,703221282,1,,0,,0,,0,,0,,0
+dw,fact,udm_project_cuts,"Y, AUTO(ENCODE)",KEY(user_id),evaluation_date,50,none,1,5.62,74.26,15658994628,1.00,15493252096,165742532,0.0105,0.00,Automatic,N,2025-03-06,0,72,0,4,11,36.3636,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,udm_project_cuts_v2_ytd_test,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),50,none,1,0.00,0.00,15044385436,1.00,15044385792,0,0.0000,0.00,,,,,1,0,11,19,57.8947,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,user_ds_product_attributes_old,Y,KEY(user_id),date_id,256,none,1,2.03,3.25,13732878850,1.00,13732878336,514,0.0000,0.00,,,,,134,0,16,17,94.1176,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,udm_visitors_v2,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,13673590888,1.00,13673590784,104,0.0000,0.00,,,,,8,0,16,29,55.1724,0,1,1,701864755,2,,0,,0,,0,,0,,0
+dw,fact,udm_visitors_v2,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,13673590888,1.00,13673590784,104,0.0000,0.00,,,,,1,0,16,29,55.1724,0,1,1,701864755,2,,0,,0,,0,,0,,0
+dw,public,udm_visitors_temp,"Y, AUTO(ENCODE)",KEY(user_id),evaluation_date,0,none,1,0.00,0.00,13614624283,1.00,13614624768,0,0.0000,0.00,,,,,5,0,1,12,8.3333,0,1,0,702573031,5,,0,,0,,0,,0,,0
+dw,public,stage_engagement_kpi_dashboard_cumulative_visitors_cutters_data_with_registration_year_v2,"Y, AUTO(ENCODE)",KEY(user_id),evaluation_date,50,none,1,0.00,0.00,13067269639,1.00,13067270144,0,0.0000,0.00,,,,,1,0,4,16,25.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,stage_engagement_kpi_dashboard_cumulative_visitors_cutters_cuts_data_v2,"Y, AUTO(ENCODE)",KEY(user_id),evaluation_date,50,none,1,0.00,0.00,13067269639,1.00,13067270144,0,0.0000,0.00,,,,,1,0,8,25,32.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,user_subscription_daily,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),14,none,2,6.54,43.17,12957842623,1.00,12475288576,482554047,0.0372,0.00,Automatic,N,2025-03-02,4,183,0,7,8,87.5000,1,1,0,703252331,52,,0,,0,703365288,43,702645974,3,,0
+dw,public,udm_visitors_v2_stage_matln,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,12543770294,1.00,12543770624,0,0.0000,0.00,,,,,1,0,16,29,55.1724,0,1,1,,0,,0,,0,,0,,0,,0
+dw,public,udm_registrations_temp,"Y, AUTO(ENCODE)",KEY(user_id),evaluation_date,0,none,1,0.00,0.00,9419459443,1.00,9419459584,0,0.0000,0.00,,,,,1,0,2,4,50.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_and_cut_events_with_parent_project_classification,Y,KEY(user_id),event_date_id,2048,none,2,0.00,0.00,7927279448,1.02,7927279616,0,0.0000,0.00,Manual,Y,2025-02-28,6,134,0,33,35,94.2857,0,1,5,,0,,0,,0,,0,,0,,0
+dw,stage,project_and_cut_events_with_parent_project_classification,Y,KEY(user_id),event_date_id,2048,none,2,97.92,100.00,7792661285,1.02,7792662016,0,0.0000,0.00,,,,,1,0,33,35,94.2857,0,1,5,,0,,0,,0,,0,,0,,0
+dw,analytics,fact_image_cut,Y,AUTO(KEY(date_id)),AUTO(SORTKEY(user_id)),500,none,2,1.20,0.00,6123254768,1.22,6074621440,48633328,0.0079,2.00,Automatic,N,2025-02-27,7,114,0,15,16,93.7500,1,1,0,703367390,40,,0,,0,703363887,38,,0,,0
+dw,analytics,fact_image_cut,Y,AUTO(KEY(date_id)),AUTO(SORTKEY(user_id)),500,none,2,1.20,0.00,6123254768,1.22,6074621440,48633328,0.0079,2.00,Manual,N,2025-02-28,6,114,0,15,16,93.7500,1,1,0,703367390,40,,0,,0,703363887,38,,0,,0
+dw,public,udm_usd_subscriptions_temp,"Y, AUTO(ENCODE)",KEY(user_id),date_id,14,none,1,0.00,0.00,5774276229,1.00,5774276096,133,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,statsig_cut_session,Y,KEY(user_id),cut_session_start_date,65535,az64,1,0.00,100.00,5752035340,1.03,5752035328,12,0.0000,0.00,,,,,33,0,11,11,100.0000,1,1,2,,0,,0,,0,,0,,0,,0
+dw,analytics,statsig_cut_session,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),65535,,0,,0.00,5358447522,1.03,5358447616,0,0.0000,,Manual,N,2025-02-28,6,2,0,10,10,100.0000,0,1,2,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_sessions_2020_2025_1,"Y, AUTO(ENCODE)",KEY(user_id),session_id,255,none,2,74.99,100.00,5186101001,2.26,5186101248,0,0.0000,0.00,,,,,1,0,3,5,60.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,subscription_user_daily,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),255,none,1,100.00,100.00,4872208543,1.00,4872208384,159,0.0000,0.00,,,,,0,0,0,29,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_pdp_to_cut_funnel,Y,KEY(user_id),event_date_id,12297,none,2,7.32,28.51,4093552890,1.01,3913256704,180296186,0.0440,0.00,Automatic,N,2025-03-05,1,194,0,44,51,86.2745,1,1,7,699176647,6,,0,,0,,0,,0,,0
+dw,analytics,project_pdp_to_cut_funnel,Y,KEY(user_id),event_date_id,12297,none,2,7.32,28.51,4093552890,1.01,3913256704,180296186,0.0440,0.00,Manual,Y,2025-02-28,6,194,0,44,51,86.2745,1,1,7,699176647,6,,0,,0,,0,,0,,0
+dw,analytics,monthly_active_users,Y,KEY(user_id),rolling_end_date,25,none,2,2.60,10.90,3988049405,1.00,3904385280,83664125,0.0209,1.00,Manual,Y,2025-02-28,6,170,0,3,5,60.0000,0,1,0,702251703,4,,0,,0,702640941,6,,0,,0
+dw,stage,subscription_user_daily_subscription_by_date,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),255,,0,,0.00,3777939207,1.00,3777939200,7,0.0000,,,,,,1,0,20,28,71.4285,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,subscription_user_daily_subscription_rank,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(date_id)),255,none,4,0.00,0.00,3777939207,1.00,3777939200,7,0.0000,0.00,,,,,1,0,17,29,58.6206,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,subscription_user_daily,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(date_id)),255,none,2,0.00,0.00,3746028575,1.00,3746028544,31,0.0000,0.00,,,,,1,0,17,26,65.3846,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,subscription_user_daily_user_event,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(date_id)),255,none,2,0.00,0.00,3746028575,1.00,3746028544,31,0.0000,0.00,,,,,1,0,17,27,62.9629,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,subscription_user_daily_daily_status,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,3746028575,,3746028544,31,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,marketing_communication,"Y, AUTO(ENCODE)",KEY(market_journey_action_id),communication_timestamp,100,none,1,3.02,11.03,3688880887,1.30,3649636096,39244791,0.0106,0.00,Automatic,N,2025-03-06,0,172,0,5,6,83.3333,0,1,0,703109992,3,,0,,0,703110127,11,,0,,0
+dw,public,onboarding_jv_test_sessions_complete_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,3644157664,,3644157696,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,marketing_journey_engagement,"Y, AUTO(ENCODE)",AUTO(KEY(communication_id)),AUTO(SORTKEY(dw_load_date)),100,az64,1,1.75,11.18,3635176199,1.00,3624349696,10826503,0.0029,0.00,Automatic,N,2025-03-06,0,239,0,18,18,100.0000,1,1,0,703117632,40,,0,,0,702128234,16,,0,,0
+dw,analytics,project_conversion_fact,Y,KEY(user_id),event_date_id,12297,none,3,6.53,25.28,3582625831,1.01,3441950464,140675367,0.0392,1.00,Manual,Y,2025-02-28,6,224,0,56,63,88.8888,1,1,7,703090364,13,,0,,0,702303381,10,,0,,0
+dw,analytics,project_conversion_fact,Y,KEY(user_id),event_date_id,12297,none,3,6.53,25.28,3582625831,1.01,3441950464,140675367,0.0392,1.00,Automatic,N,2025-03-05,1,224,0,56,63,88.8888,1,1,7,703090364,13,,0,,0,702303381,10,,0,,0
+dw,fact,marketing_interaction,"Y, AUTO(ENCODE)",KEY(market_journey_action_id),interaction_timestamp,100,none,1,3.23,12.51,3066043303,1.46,3003669760,62373543,0.0203,0.00,Automatic,N,2025-03-06,0,170,0,5,6,83.3333,0,1,0,698766956,1,,0,,0,703110096,9,,0,,0
+dw,analytics,user_subscription_by_day,"Y, AUTO(ENCODE)",KEY(user_id),date_id,14,none,1,0.00,0.00,3006458935,1.00,3006458880,55,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,project_search_events,Y,KEY(user_id),date_id,65535,az64,1,1.19,9.86,2760920665,1.01,2728593408,32327257,0.0117,0.00,Automatic,N,2025-03-01,5,134,0,39,39,100.0000,1,1,34,,0,,0,,0,699883123,1,,0,,0
+dw,analytics,image_conversion_fact,Y,KEY(user_id),event_date_id,65535,none,3,6.62,20.85,2567843859,1.01,2484327168,83516691,0.0325,0.00,Automatic,N,2025-03-05,1,229,0,81,87,93.1034,0,1,8,703293673,23,,0,,0,,0,,0,,0
+dw,analytics,image_conversion_fact,Y,KEY(user_id),event_date_id,65535,none,3,6.62,20.85,2567843859,1.01,2484327168,83516691,0.0325,0.00,Manual,N,2025-02-28,6,229,0,81,87,93.1034,0,1,8,703293673,23,,0,,0,,0,,0,,0
+dw,analytics,project_conversion_fact_may29_tbd,Y,KEY(user_id),event_date_id,12297,none,3,0.00,0.00,2432356256,1.01,2432355840,416,0.0000,0.00,Manual,Y,2025-02-28,6,134,0,55,62,88.7096,1,1,7,,0,,0,,0,,0,,0,,0
+dw,analytics,weekly_active_users,Y,KEY(user_id),rolling_end_date,25,none,2,7.80,18.91,2173481532,1.00,2117407232,56074300,0.0257,5.00,,,,,166,0,3,5,60.0000,0,1,0,703220920,4,,0,,0,702640941,6,,0,,0
+dw,fact,user_event_metrics_raw,"Y, AUTO(ENCODE)",KEY(user_id),event_name,255,none,3,0.00,0.00,1885428028,1.00,1885427968,60,0.0000,0.00,,,,,1,0,7,8,87.5000,2,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2020_2025_01_created_date,"Y, AUTO(ENCODE)",KEY(user_id),session_id,255,none,2,99.99,100.00,1856393740,1.01,1853750784,2642956,0.0014,30.00,,,,,1,0,6,8,75.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2020_2025_01_created_date_bkp,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),255,,0,,0.00,1854541507,1.01,1853750784,790723,0.0004,,,,,,1,0,8,8,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,tbl_temp_qtd_user_cuts,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),evaluation_date_id,200,none,1,0.00,0.00,1537373573,1.00,1537373568,5,0.0000,0.00,,,,,7,0,13,19,68.4210,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,image,"Y, AUTO(ENCODE)",AUTO(KEY(image_id)),image_source_classification,65535,none,4,18.17,100.00,1465384032,1.00,1464358912,1025120,0.0006,17.00,Automatic,N,2025-03-06,0,438,0,42,55,76.3636,1,1,4,703390312,167,,0,,0,702205543,11,699044998,1,,0
+dw,cricut_dw,mblack,Y,KEY(user_id),event_timestamp,500,zstd,5,4.44,0.00,1462213525,1.02,1426392960,35820565,0.0244,0.00,Automatic,N,2025-03-01,5,135,0,31,31,100.0000,5,1,0,,0,,0,,0,699898769,1,,0,,0
+dw,analytics,user_lifetime_value,Y,AUTO(EVEN),user_id,65535,none,2,74.99,100.00,1418430442,,1418430464,0,0.0000,0.00,,,,,135,0,94,99,94.9494,0,0,3,,0,,0,,0,699883179,1,,0,,0
+dw,fact,image_search_events,"Y, AUTO(ENCODE)",KEY(user_id),date_id,65535,none,1,4.11,0.00,1377830980,1.01,1356248448,21582532,0.0156,0.00,Automatic,N,2025-03-01,5,1,0,21,22,95.4545,0,1,17,,0,,0,,0,,0,,0,,0
+dw,fact,cut_project_session_summary,"Y, AUTO(ENCODE)",AUTO(KEY(cut_session_id)),AUTO(SORTKEY(user_id)),255,none,1,2.85,9.76,1298505980,1.00,1281965056,16540924,0.0127,0.00,,,,,193,0,41,43,95.3488,0,1,0,703351926,39,,0,,0,699899340,1,,0,,0
+dw,analytics,fact_project_cut,Y,KEY(date_id),user_id,255,none,2,1.64,0.00,1276396018,1.23,1261577856,14818162,0.0116,4.00,Manual,N,2025-02-28,6,17,0,8,9,88.8888,1,1,0,703367691,7,,0,,0,699678314,3,,0,,0
+dw,analytics,fact_project_cut,Y,KEY(date_id),user_id,255,none,2,1.64,0.00,1276396018,1.23,1261577856,14818162,0.0116,4.00,Automatic,N,2025-02-27,7,17,0,8,9,88.8888,1,1,0,703367691,7,,0,,0,699678314,3,,0,,0
+dw,analytics,cut_session_master,Y,EVEN,user_id,344,az64,2,1.34,0.00,1242501789,,1231907712,10594077,0.0085,0.00,Manual,N,2025-02-28,6,7,0,6,6,100.0000,2,0,0,699078195,3,,0,,0,,0,,0,,0
+dw,analytics,search_conversion_logic,"Y, AUTO(ENCODE)",KEY(user_id),date_id,65535,none,4,0.00,0.00,1168235671,1.01,1168235648,23,0.0000,0.00,,,,,0,0,0,37,0.0000,0,0,17,,0,,0,,0,,0,,0,,0
+dw,analytics,project_query_conversion,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,1083997651,,1083997696,0,0.0000,,,,,,0,0,0,24,0.0000,0,0,9,,0,,0,,0,,0,,0,,0
+dw,analytics,cut_migration_fact_project_cut_v2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,1065672770,,1065672768,2,0.0000,,Manual,N,2025-02-28,6,2,0,9,9,100.0000,0,0,2,,0,,0,,0,,0,,0,,0
+dw,analytics,cutpass_end_base_data,Y,KEY(user_id),event_timestamp,512,az64,2,0.00,0.00,1060603247,1.05,1060603264,0,0.0000,0.00,Manual,Y,2025-02-28,6,134,0,54,57,94.7368,1,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_session_daily_metrics,Y,KEY(user_id),event_date_id,12297,none,2,8.08,31.58,1053783886,1.01,1002419520,51364366,0.0487,0.00,Automatic,N,2025-03-05,1,173,0,31,36,86.1111,0,1,1,699177777,8,,0,,0,,0,,0,,0
+dw,analytics,project_session_daily_metrics,Y,KEY(user_id),event_date_id,12297,none,2,8.08,31.58,1053783886,1.01,1002419520,51364366,0.0487,0.00,Manual,Y,2025-02-28,6,173,0,31,36,86.1111,0,1,1,699177777,8,,0,,0,,0,,0,,0
+dw,analytics,image_session_daily_metrics,Y,KEY(user_id),event_date_id,12297,none,1,5.97,23.09,1040336568,1.01,1002973312,37363256,0.0359,0.00,Automatic,N,2025-03-04,2,179,0,55,58,94.8275,0,1,1,699111635,12,,0,,0,703117188,2,,0,,0
+dw,analytics,image_session_daily_metrics,Y,KEY(user_id),event_date_id,12297,none,1,5.97,23.09,1040336568,1.01,1002973312,37363256,0.0359,0.00,Manual,Y,2025-02-28,6,179,0,55,58,94.8275,0,1,1,699111635,12,,0,,0,703117188,2,,0,,0
+dw,fact,image_cut_daily,"Y, AUTO(ENCODE)",KEY(image_id),cut_date,0,none,1,0.76,9.49,1022551667,1.00,1012787200,9764467,0.0095,0.00,Automatic,N,2025-03-05,1,243,0,23,25,92.0000,0,1,0,703382791,50,,0,,0,702126822,5,,0,,0
+dw,stage,mltv_user_date_timeline,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,984576819,,984576832,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_cut_session_windows,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),32,,0,,0.00,982011750,,982011776,0,0.0000,,,,,,0,0,0,4,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_search_events_backfill,"Y, AUTO(ENCODE)",KEY(user_id),date_id,65535,none,1,0.00,0.00,970049990,1.01,970049984,6,0.0000,0.00,,,,,1,0,37,38,97.3684,0,1,30,,0,,0,,0,,0,,0,,0
+dw,public,tbl_temp_distinct_cuts,"Y, AUTO(ENCODE)",AUTO(KEY(project_id)),cut_date,65535,none,1,0.00,0.00,922395174,2.51,922395200,0,0.0000,0.00,,,,,7,0,8,12,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,fact,image_search_events_with_conversion,Y,KEY(user_id),event_date_id,2048,none,2,0.00,0.00,905687103,1.01,905687616,0,0.0000,0.00,,,,,134,0,62,65,95.3846,0,1,8,,0,,0,,0,,0,,0,,0
+dw,analytics,project_session_daily_metrics_may29_tbd,Y,KEY(user_id),event_date_id,12297,none,2,4.88,0.00,893251128,1.01,893251008,120,0.0000,0.00,Manual,Y,2025-02-28,6,135,0,31,36,86.1111,0,1,1,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_user_date_timeline,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,887819316,,887819328,0,0.0000,,,,,,4,0,2,2,100.0000,0,0,0,699680307,2,,0,,0,699680923,1,,0,,0
+dw,stage,mltv_c_serial_user_months_since_registration,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),500,,0,,0.00,814973932,1.02,814973952,0,0.0000,,,,,,5,0,4,4,100.0000,0,1,0,699680115,3,,0,,0,,0,,0,,0
+dw,analytics,pillar4_discovery_project_metrics,Y,KEY(user_id),event_date_id,10,az64,2,7.82,53.14,812966343,1.01,812966784,0,0.0000,0.00,Automatic,N,2025-03-06,0,170,0,24,25,96.0000,1,1,0,703221639,7,,0,,0,,0,,0,,0
+dw,analytics,pillar4_discovery_project_metrics,Y,KEY(user_id),event_date_id,10,az64,2,7.82,53.14,812966343,1.01,812966784,0,0.0000,0.00,Manual,Y,2025-02-28,6,170,0,24,25,96.0000,1,1,0,703221639,7,,0,,0,,0,,0,,0
+dw,stage,mltv_serial_user_months_since_registration,"Y, AUTO(ENCODE)",AUTO(KEY(serial_number)),AUTO(SORTKEY),500,,0,,0.00,796474265,1.01,796474240,25,0.0000,,,,,,1,0,4,4,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,general_ledger_detail,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(account_number)),50,none,1,100.00,100.00,765623460,,765623424,36,0.0000,0.00,Automatic,N,2025-03-06,0,213,0,26,27,96.2962,0,0,0,703209201,34,,0,,0,703281548,19,,0,,0
+dw,stage,dl_ole_db_source_union_all_query,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),10,,0,,0.00,765593715,,765593728,0,0.0000,,,,,,5,0,10,10,100.0000,0,0,0,702903306,21,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_events_sessions,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,100.00,761951674,,761951680,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,daily_active_users,Y,KEY(user_id),date_id,25,none,1,0.59,9.61,747577309,1.00,746626176,951133,0.0012,5.00,Automatic,N,2025-03-01,5,313,0,3,4,75.0000,0,1,0,702890989,6,,0,,0,703322980,20,,0,,0
+dw,analytics,daily_active_users,Y,KEY(user_id),date_id,25,none,1,0.59,9.61,747577309,1.00,746626176,951133,0.0012,5.00,Manual,N,2025-03-06,0,313,0,3,4,75.0000,0,1,0,702890989,6,,0,,0,703322980,20,,0,,0
+dw,analytics,daily_active_users,Y,KEY(user_id),date_id,25,none,1,0.59,9.61,747577309,1.00,746626176,951133,0.0012,5.00,Manual,Y,2025-03-03,3,313,0,3,4,75.0000,0,1,0,702890989,6,,0,,0,703322980,20,,0,,0
+dw,public,onboarding_jv_events_sessions_till_14,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,100.00,705688191,,705688192,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_event_sessions_till_14_bkp,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,705284001,,705284032,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_pdp_customize_makeit_bookmark_to_cut_event_funnel,Y,KEY(user_id),event_date_id,2048,none,2,0.00,0.00,685335772,1.01,685335808,0,0.0000,0.00,Manual,Y,2025-02-28,6,134,0,32,34,94.1176,0,1,5,,0,,0,,0,,0,,0,,0
+dw,stage,udm_visitors_raw_full,"Y, AUTO(ENCODE)",KEY(user_id),evaluation_date,1023,none,1,0.00,0.00,685080468,1.00,685080448,20,0.0000,0.00,,,,,5,0,4,5,80.0000,0,1,1,699399497,3,,0,,0,,0,,0,,0
+dw,dim,project_tbd03032025,"Y, AUTO(ENCODE)",AUTO(KEY(project_id)),AUTO(SORTKEY(community_status)),65535,none,1,4.84,57.36,677108943,1.00,660077952,17030991,0.0251,0.00,Automatic,N,2025-03-04,2,396,0,90,101,89.1089,0,1,2,703390081,5,,0,,0,702126332,1,,0,,0
+dw,dim,project_tbd03032025,"Y, AUTO(ENCODE)",AUTO(KEY(project_id)),AUTO(SORTKEY(community_status)),65535,none,1,4.84,57.36,677108943,1.00,660077952,17030991,0.0251,0.00,Automatic,N,2025-03-04,2,54,0,90,101,89.1089,0,1,2,703390081,5,,0,,0,702126332,1,,0,,0
+dw,public,dim_project_gold_backup_mar_3rd,"Y, AUTO(ENCODE)",AUTO(KEY(project_id)),AUTO(SORTKEY(community_status)),65535,none,1,0.00,0.00,661814731,1.00,661814720,11,0.0000,0.00,,,,,18,0,90,101,89.1089,0,1,2,701066155,17,,0,,0,,0,,0,,0
+dw,public,ad_viewed_no_tac,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,650452016,,650452032,0,0.0000,,,,,,14,0,8,9,88.8888,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,ad_viewed,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,643290971,,643290944,27,0.0000,,,,,,11,0,8,9,88.8888,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,project_20240430,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(project_id)),65535,none,1,1.99,6.80,635421951,,626271040,9150911,0.0144,0.00,,,,,137,0,78,85,91.7647,0,0,2,703347580,1,,0,,0,699899264,1,,0,,0
+dw,analytics,project_user_daily_metrics,Y,KEY(user_id),event_date_id,512,none,2,7.77,30.34,633654406,1.01,603982656,29671750,0.0468,15.00,Manual,Y,2025-02-28,6,205,0,66,68,97.0588,0,1,0,699181039,16,,0,,0,703354532,15,,0,,0
+dw,analytics,project_user_daily_metrics,Y,KEY(user_id),event_date_id,512,none,2,7.77,30.34,633654406,1.01,603982656,29671750,0.0468,15.00,Automatic,N,2025-03-05,1,205,0,66,68,97.0588,0,1,0,699181039,16,,0,,0,703354532,15,,0,,0
+dw,public,onboarding_jv_test_sessions_2020_2025_11,"Y, AUTO(ENCODE)",KEY(user_id),session_id,255,none,2,100.00,100.00,621907612,1.01,621884864,22748,0.0000,0.00,Automatic,N,2025-03-01,5,1,0,4,6,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2020_2025_11_1,"Y, AUTO(ENCODE)",KEY(user_id),session_id,255,none,2,0.00,100.00,620268942,1.01,620268928,14,0.0000,0.00,,,,,1,0,3,5,60.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2020_2025_08,"Y, AUTO(ENCODE)",KEY(user_id),session_id,255,none,2,100.00,100.00,617705320,1.01,617705344,0,0.0000,0.00,Automatic,N,2025-03-01,5,1,0,4,6,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2020_2025_08_bkp,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(session_id)),255,none,2,0.00,0.00,617705320,1.01,617705344,0,0.0000,0.00,,,,,1,0,3,5,60.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2020_2025_06,"Y, AUTO(ENCODE)",KEY(user_id),session_id,255,none,2,0.00,100.00,616169820,1.01,616169792,28,0.0000,0.00,,,,,1,0,3,5,60.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2020_2025_06_bkp,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(session_id)),255,none,2,0.00,0.00,616169820,1.01,616169792,28,0.0000,0.00,,,,,1,0,3,5,60.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_conversion_fact_may30_tbd,Y,KEY(user_id),event_date_id,12297,none,3,0.00,0.00,603765655,1.01,603765632,23,0.0000,0.00,Manual,Y,2025-02-28,6,133,0,56,63,88.8888,1,1,7,,0,,0,,0,,0,,0,,0
+dw,analytics,user_monthly_cut_behavior_raw,"Y, AUTO(ENCODE)",ALL,first_day_of_evaluation_month,0,none,1,0.00,0.00,598756327,,598756352,0,0.0000,0.00,,,,,0,0,0,22,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,udm_visitors_temp_staging_v2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),7,,0,,0.00,577851650,,577851648,2,0.0000,,,,,,3,0,5,5,100.0000,0,0,0,703057584,14,,0,,0,,0,,0,,0
+dw,fact,udm_cuts_user_project_cut_activity_v2,"Y, AUTO(ENCODE)",KEY(user_id),date_id,0,none,1,0.00,0.00,569928877,1.00,569928896,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,user_monthly_cut_behavior_labelled_all_with_quartile,"Y, AUTO(ENCODE)",ALL,first_day_of_evaluation_month,14,none,1,0.00,0.00,556597466,,556597440,26,0.0000,0.00,,,,,0,0,0,31,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,user_monthly_cut_behavior_labelled_all,"Y, AUTO(ENCODE)",ALL,first_day_of_evaluation_month,14,none,1,0.00,0.00,556597466,,556597440,26,0.0000,0.00,,,,,0,0,0,26,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,engagement_cohorts,Y,KEY(user_id),first_day_of_evaluation_month,50,az64,1,5.14,10.16,549660115,1.00,549660160,0,0.0000,0.00,,,,,156,0,24,24,100.0000,1,1,0,703381190,16,,0,,0,703381190,12,700356293,1,,0
+dw,stage,tbl_temp_user_status_in_previous_month,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),user_id,13,none,1,0.00,0.00,535456046,1.00,535456032,14,0.0000,0.00,,,,,4,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,image_user_daily_metrics,Y,KEY(user_id),event_date_id,512,none,1,5.20,20.01,523516640,1.00,507171008,16345632,0.0312,0.00,Manual,Y,2025-02-28,6,201,0,54,55,98.1818,0,1,0,699121745,13,,0,,0,703317671,10,,0,,0
+dw,analytics,image_user_daily_metrics,Y,KEY(user_id),event_date_id,512,none,1,5.20,20.01,523516640,1.00,507171008,16345632,0.0312,0.00,Automatic,N,2025-03-04,2,201,0,54,55,98.1818,0,1,0,699121745,13,,0,,0,703317671,10,,0,,0
+dw,public,tbl_temp_user_status_in_previous_month,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),13,none,1,0.00,0.00,521383462,1.00,521383456,6,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,active_users_analysis_check_v1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,47.98,501982454,,501982464,0,0.0000,,,,,,1,0,9,9,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,q4_search_numbers_final_unique_paid,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),512,,0,,0.00,489066302,1.00,489066304,0,0.0000,,,,,,1,0,21,21,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,q4_search_numbers_final,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,73.79,489066302,,489066304,0,0.0000,,,,,,1,0,19,19,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,q4_search_numbers_final_unique_paid_fixing_cuts,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),512,,0,,0.00,489066302,1.00,489066304,0,0.0000,,,,,,1,0,21,21,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,udm_visitors_raw_agg,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,478486827,,478486816,11,0.0000,,,,,,1,0,4,4,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,analytics,pillar4_discovery_project_metrics_with_cuts,Y,KEY(user_id),event_date_id,10,az64,2,12.14,85.85,476308140,1.01,476308096,44,0.0000,0.00,Automatic,N,2025-03-05,1,171,0,40,41,97.5609,1,1,0,699137166,10,,0,,0,,0,,0,,0
+dw,analytics,pillar4_discovery_project_metrics_with_cuts,Y,KEY(user_id),event_date_id,10,az64,2,12.14,85.85,476308140,1.01,476308096,44,0.0000,0.00,Manual,Y,2025-02-28,6,171,0,40,41,97.5609,1,1,0,699137166,10,,0,,0,,0,,0,,0
+dw,analytics,image_search_session_360,"Y, AUTO(ENCODE)",KEY(user_id),event_date_id,2048,none,3,3.97,0.00,469879405,1.01,469829312,50093,0.0001,0.00,Manual,N,2025-02-28,6,135,0,60,64,93.7500,0,1,1,,0,,0,,0,,0,,0,,0
+dw,public,updated_visitor_count,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,50.39,466540137,,466540128,9,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,user_steps_client_source,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,458829212,,458829216,0,0.0000,,,,,,1,0,15,15,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_user_daily_metrics_may29_tbd,Y,KEY(user_id),event_date_id,512,none,2,4.81,0.00,453383630,1.00,453383584,46,0.0000,0.00,Manual,Y,2025-02-28,6,135,0,70,72,97.2222,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,dl_sap_order_detail_ce10010,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),30,,0,,0.00,445643383,,445643392,0,0.0000,,,,,,5,0,10,10,100.0000,0,0,0,703189847,37,,0,,0,703196237,9,,0,,0
+dw,public,active_users,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,51.61,445203412,,445203424,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,ce10010,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,435099932,,435099936,0,0.0000,,,,,,29,0,92,92,100.0000,0,0,0,702851443,17,,0,,0,702645858,2,,0,,0
+dw,public,user_steps_,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,427452261,,427452256,5,0.0000,,,,,,1,0,10,10,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,user_monthly_cut_behavior_labelled_after_cut_data_start,"Y, AUTO(ENCODE)",ALL,first_day_of_evaluation_month,13,none,1,0.00,0.00,423476593,,423476608,0,0.0000,0.00,,,,,0,0,0,24,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_search_events,Y,KEY(user_id),date_id,65535,az64,1,1.24,1.25,408597572,1.01,408597600,0,0.0000,0.00,Manual,Y,2025-02-28,6,3,0,38,38,100.0000,1,1,34,,0,,0,,0,699883123,1,,0,,0
+dw,analytics,client_image_search_conversions,"Y, AUTO(ENCODE)",KEY(user_id),last_day_of_week,65535,none,3,0.00,0.00,408153439,1.01,408153440,0,0.0000,0.00,,,,,0,0,0,18,0.0000,0,0,4,,0,,0,,0,,0,,0,,0
+dw,public,unique_active_users_with_steps,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,373475866,,373475872,0,0.0000,,,,,,1,0,11,11,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,project_master_fact,Y,KEY(user_id),event_date_id,12297,none,2,54.14,100.00,341970630,1.04,341970624,6,0.0000,0.00,,,,,28,0,41,46,89.1304,0,1,7,703075925,17,,0,,0,703076839,11,,0,,0
+dw,analytics,pillar4_discovery_image_metrics_with_cuts,Y,KEY(user_id),event_date_id,10,az64,2,16.69,59.43,336831547,1.01,336831552,0,0.0000,0.00,Automatic,N,2025-03-04,2,158,0,20,21,95.2380,1,1,0,701990496,7,,0,,0,,0,,0,,0
+dw,analytics,pillar4_discovery_image_metrics_with_cuts,Y,KEY(user_id),event_date_id,10,az64,2,16.69,59.43,336831547,1.01,336831552,0,0.0000,0.00,Manual,Y,2025-02-28,6,158,0,20,21,95.2380,1,1,0,701990496,7,,0,,0,,0,,0,,0
+dw,analytics,image_user_daily_metrics_may30_tbd,Y,KEY(user_id),event_date_id,512,none,1,0.00,0.00,324868730,1.00,324868736,0,0.0000,0.00,Manual,Y,2025-02-28,6,134,0,53,54,98.1481,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_events_sessions_2024,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,308052205,,308052192,13,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_events_sessions_2023,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,283413928,,283413920,8,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,image_conversion_fact_v1_tbd,Y,KEY(user_id),event_date_id,65535,none,3,0.00,0.00,277942163,1.01,277942144,19,0.0000,0.00,Manual,Y,2025-02-28,6,135,0,78,84,92.8571,0,1,8,,0,,0,,0,,0,,0,,0
+dw,fact,cut_pass_end_base_data,Y,KEY(user_id),file_date_id,65535,lzo,2,0.00,0.00,273828476,1.07,273828480,0,0.0000,0.00,,,,,1,0,52,54,96.2962,2,1,38,,0,,0,,0,,0,,0,,0
+dw,public,hb_project_engagement_lifespan,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),200,none,1,0.00,0.00,263183833,1.00,263183840,0,0.0000,0.00,,,,,1,0,13,14,92.8571,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_cut_freq,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),200,none,2,0.00,0.00,263183833,1.00,263183840,0,0.0000,0.00,,,,,1,0,13,15,86.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,active_users_analysis_check,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,261119952,,261119952,0,0.0000,,,,,,1,0,9,9,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,tac_user_no_tac,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,233567791,,233567792,0,0.0000,,,,,,10,0,14,15,93.3333,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,project_pdp_customize_makeit_bookmark_to_cut_event_funnel,Y,KEY(user_id),event_date_id,2048,none,2,75.48,100.00,233450760,1.01,233450752,8,0.0000,0.00,,,,,1,0,32,34,94.1176,0,1,5,,0,,0,,0,,0,,0,,0
+dw,public,tac_user,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,232070484,,232070480,4,0.0000,,,,,,16,0,14,15,93.3333,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,pillar4_discovery_project_metrics_with_cuts_mat_view,Y,KEY(user_id),event_date_id,10,none,2,0.00,0.00,231882958,1.01,231882960,0,0.0000,0.00,,,,,0,0,0,40,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,pillar4_discovery_project_metrics_with_cuts_mv,Y,KEY(user_id),event_date_id,10,none,2,0.00,0.00,230467948,1.01,230467952,0,0.0000,0.00,,,,,0,0,0,40,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,unique_active_users_with_steps_client_source,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,218329936,,218329936,0,0.0000,,,,,,1,0,15,15,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,unique_active_users_with_steps_client_source_2023,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,207701187,,207701184,3,0.0000,,,,,,1,0,15,15,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,tbl_transform_user_ds_product_attributes,Y,KEY(user_id),date_id,256,none,1,0.00,100.00,196387542,1.00,196387536,6,0.0000,0.00,,,,,1,0,10,11,90.9090,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,dl_sap_order_detail_vbak_vbap,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),120,,0,,0.00,186981340,,186981344,0,0.0000,,,,,,9,0,25,25,100.0000,0,0,0,703196127,84,,0,,0,,0,,0,,0
+dw,fact,order_line_erp,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(order_number)),250,none,1,74.90,100.00,186981340,,186981344,0,0.0000,0.00,,,,,863,0,31,32,96.8750,0,0,0,703323532,195,,0,,0,703352145,224,,0,,0
+dw,fact,order_line_dtc,"Y, AUTO(ENCODE)",AUTO(KEY(order_detail_id)),AUTO(SORTKEY(order_date)),2000,none,1,62.87,100.00,184560327,1.00,180409664,4150663,0.0224,0.00,Automatic,N,2025-03-06,0,585,0,68,70,97.1428,0,1,2,703204834,121,,0,,0,703204834,126,703134086,26,,0
+dw,stage,dl_invoice_detail,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,183524221,,183524224,0,0.0000,,,,,,4,0,8,8,100.0000,0,0,0,703190444,36,,0,,0,,0,703024752,1,,0
+dw,fact,invoice_detail,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(invoice_date)),6,none,1,0.00,100.00,183524221,,183524224,0,0.0000,0.00,,,,,468,0,9,10,90.0000,0,0,0,703208752,47,,0,,0,703208474,144,,0,,0
+dw,fact,sale_shipment_billing,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(sold_to_customer_number)),30,none,1,0.00,100.00,182884423,,182884416,7,0.0000,0.00,Automatic,N,2025-03-04,2,178,0,36,37,97.2972,0,0,0,701908898,9,,0,,0,703032555,6,,0,,0
+dw,stage,tbl_temp_user_status_in_previous_quarter,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),user_id,24,none,1,0.00,0.00,179973878,1.00,179973872,6,0.0000,0.00,,,,,4,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,tbl_temp_user_status_in_previous_quarter,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),24,none,1,0.00,0.00,179973878,1.00,179973872,6,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,searching_users,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,174795501,,174795504,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dl_ole_db_source_cust_query,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),30,,0,,0.00,167317865,,167317872,0,0.0000,,,,,,4,0,2,2,100.0000,0,0,0,702903251,14,,0,,0,702903488,7,,0,,0
+dw,analytics,netstock_collaborator_forecast_actuals,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,100.00,164198512,,164198512,0,0.0000,,Manual,N,2025-02-28,6,460,0,114,114,100.0000,0,0,0,703204874,68,,0,,0,702124610,4,,0,,0
+dw,stage,mltv_c_cuts,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,161305494,,161305488,6,0.0000,,,,,,5,0,4,4,100.0000,0,0,0,699680863,3,,0,,0,699680923,1,,0,,0
+dw,stage,mltv_cuts,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,159977853,,159977856,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,order_erp,"Y, AUTO(ENCODE)",AUTO(KEY(order_number)),AUTO(SORTKEY(sales_type_code)),200,none,1,0.00,100.00,159909674,1.00,159909680,0,0.0000,0.00,Automatic,N,2025-03-06,0,1096,0,26,27,96.2962,0,1,0,703336959,216,,0,,0,703352145,165,702998230,35,,0
+dw,stage,dl_ole_db_source_doc_query,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),30,,0,,0.00,159889994,,159890000,0,0.0000,,,,,,4,0,2,2,100.0000,0,0,0,702902747,14,,0,,0,702903488,7,,0,,0
+dw,fact,statsig_exposures,Y,KEY(user_id),AUTO(SORTKEY(group_name)),256,lzo,1,74.99,0.00,159622472,1.00,159622464,8,0.0000,0.00,,,,,218,0,7,7,100.0000,1,1,0,702806436,30,,0,,0,,0,,0,,0
+dw,dim,address,"Y, AUTO(ENCODE)",ALL,address_number,180,none,1,0.00,100.00,159357192,,159357184,8,0.0000,0.00,,,,,268,0,99,100,99.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,content_usage_user_detail,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,15.98,159267041,,172247104,0,0.0000,,Manual,N,2025-02-28,6,156,0,54,54,100.0000,0,0,0,702192176,2,,0,,0,702123206,2,,0,,0
+dw,stage,dl_tempglcustomer,"Y, AUTO(ENCODE)",AUTO(KEY(documentnumber)),AUTO(SORTKEY),10,,0,,0.00,157816515,1.00,157816512,3,0.0000,,,,,,4,0,2,2,100.0000,0,1,0,702902808,14,,0,,0,,0,702903488,7,,0
+dw,stage,ultv_cut_allocation,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,155979747,,155979744,3,0.0000,,,,,,4,0,3,3,100.0000,0,0,0,699060067,2,,0,,0,,0,,0,,0
+dw,stage,dl_invoice_list,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),9,,0,,0.00,155978578,,155978576,2,0.0000,,,,,,3,0,3,3,100.0000,0,0,0,703190605,24,,0,,0,,0,703024752,1,,0
+dw,public,testing_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,152930436,,152930432,4,0.0000,,,,,,1,0,14,14,100.0000,0,0,2,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_sub_margin_date,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,148844555,,148844560,0,0.0000,,,,,,4,0,4,4,100.0000,0,0,0,699060021,2,,0,,0,,0,,0,,0
+dw,stage,mltv_c_user_paid_month,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,148844555,,148844560,0,0.0000,,,,,,4,0,3,3,100.0000,0,0,0,699679939,2,,0,,0,,0,,0,,0
+dw,stage,mltv_subscription_revenue,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),39,,0,,0.00,148760734,,148760736,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_subs_base,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),255,none,2,0.00,0.00,145796832,1.00,145796832,0,0.0000,0.00,,,,,7,0,4,9,44.4444,0,1,0,699681353,4,,0,,0,699681372,1,,0,,0
+dw,public,q4_search_numbers,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,100.00,143821761,,143821760,1,0.0000,,,,,,1,0,19,19,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_subscription_revenue,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,141249218,,141249216,2,0.0000,,,,,,4,0,3,3,100.0000,0,0,0,699680919,2,,0,,0,699680923,1,,0,,0
+dw,analytics,sales_orders,"Y, AUTO(ENCODE)",AUTO(KEY(order_number)),AUTO(SORTKEY(order_number)),200,none,1,0.00,0.00,139094250,1.00,139094256,0,0.0000,0.00,,,,,0,0,0,77,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,subscription_plans,"Y, AUTO(ENCODE)",KEY(user_id),record_start_date,255,none,1,6.44,5.23,137912343,1.00,131106872,6805471,0.0493,0.00,,,,,244,0,10,11,90.9090,0,1,0,703111429,17,,0,,0,702833208,18,701910237,2,,0
+dw,stage,image_search_event_fact_release,Y,KEY(user_id),event_date_id,65535,none,3,97.36,0.00,134256392,1.01,134256400,0,0.0000,0.00,,,,,1,0,76,83,91.5662,0,1,9,,0,,0,,0,,0,,0,,0
+dw,stage,subscription_user_daily_monthly_status,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,134217744,,134217744,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,product_inventory_daily_history,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(date_id)),18,none,1,5.64,3.56,129997549,,124133384,5864165,0.0451,0.00,Manual,N,2025-02-28,6,178,0,23,24,95.8333,0,0,0,,0,,0,,0,702125340,5,,0,,0
+dw,analytics,statsig_first_exposures_mv,"Y, AUTO(ENCODE)",KEY(user_id),first_exposure_date,256,none,1,74.91,0.00,129128290,1.00,129128288,2,0.0000,0.00,,,,,0,0,0,9,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,statsig_first_exposure_mv,N,KEY(user_id),first_exposure_date,256,none,1,74.92,100.00,129128290,1.00,129128288,2,0.0000,0.00,,,,,16,0,0,9,0.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,q4_search_numbers_,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,128185123,,128185120,3,0.0000,,,,,,1,0,19,19,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,user_steps_artemis,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,50.09,123346789,,123346792,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,unique_active_users_with_steps_artemis,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,50.25,123192967,,123192968,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_first_30days_user_uniq_sessions,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,39.62,117995247,,117995248,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_events_448_sessions_first_30days_base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,99.69,117900534,,117900536,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,user_dates_populate,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,116779462,,116779464,0,0.0000,,,,,,6,0,9,9,100.0000,0,0,0,702895083,24,,0,,0,702913268,14,,0,,0
+dw,stage,dl_fact_order_line_incremental,"Y, AUTO(ENCODE)",AUTO(KEY(order_id)),AUTO(SORTKEY(order_id)),125,none,2,0.00,0.00,115935358,1.00,115935360,0,0.0000,0.00,,,,,13,0,38,43,88.3720,0,1,0,703124877,210,,0,,0,,0,,0,,0
+dw,public,tbl_transform_image_cut_daily_v2,Y,AUTO(EVEN),AUTO(SORTKEY(cut_date)),0,az64,1,0.00,100.00,106218654,,106218656,0,0.0000,0.00,,,,,8,0,23,24,95.8333,1,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dl_royalty_changes_incremental,"Y, AUTO(ENCODE)",AUTO(KEY(orderid)),AUTO(SORTKEY(orderid)),10,none,2,0.00,0.00,103769049,1.00,103769048,1,0.0000,0.00,,,,,5,0,2,4,50.0000,0,1,0,703122613,42,,0,,0,,0,,0,,0
+dw,public,statsig_first_exposures_auto_refresh_july27,"Y, AUTO(ENCODE)",KEY(user_id),first_exposure_date,256,none,1,74.90,0.00,100424142,1.00,100424144,0,0.0000,0.00,,,,,0,0,0,6,0.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,netstock_collab_fa_actuals,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,97954282,,97954280,2,0.0000,,,,,,20,0,105,105,100.0000,0,0,27,703237020,126,,0,,0,,0,,0,,0
+dw,stage,categorizedcharges,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),150,,0,,1.39,94596874,,94252784,344090,0.0036,,Automatic,N,2025-03-06,0,35,0,16,16,100.0000,0,0,0,703002717,115,,0,,0,703001789,47,703001465,9,,0
+dw,cricut_dw,rev_recon_categorized_charge,Y,EVEN,charge_id,100,zstd,5,74.98,100.00,94328434,,94328432,2,0.0000,0.00,,,,,157,0,19,19,100.0000,5,0,0,699421897,1,,0,,0,702125711,5,,0,,0
+dw,stage,rev_recon_categorized_charge_incremental,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),150,,0,,0.00,94321509,,94321512,0,0.0000,,,,,,7,0,16,16,100.0000,0,0,0,703002950,35,,0,,0,703002980,5,,0,,0
+dw,stage,project_pdp_to_cut_funnel,Y,KEY(user_id),event_date_id,12297,none,2,54.00,100.00,93895600,1.01,93895600,0,0.0000,0.00,,,,,28,0,44,51,86.2745,1,1,7,699176647,6,,0,,0,,0,,0,,0
+dw,analytics,engagement_daily_summary,Y,KEY(country),evaluation_date_id,200,none,1,0.00,0.00,89793918,2.36,89793936,0,0.0000,0.00,Manual,Y,2025-02-28,6,135,0,19,20,95.0000,0,1,0,,0,,0,,0,699882710,1,,0,,0
+dw,public,sub_all_charges,"Y, AUTO(ENCODE)",AUTO(KEY(next_inv_id)),AUTO(SORTKEY),50,,0,,0.00,86965734,1.88,86965736,0,0.0000,,,,,,1,0,24,27,88.8888,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_total_subscription_allocation_by_serial_number,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,0.00,83146160,,83146160,0,0.0000,,,,,,5,0,2,3,66.6666,0,0,0,699681475,3,,0,,0,699681479,1,,0,,0
+dw,public,retry_card_rotator,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,81636148,,81636144,4,0.0000,,,,,,1,0,13,14,92.8571,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,user_events,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,81101844,,81101840,4,0.0000,,,,,,4,0,2,2,100.0000,0,0,0,702959747,24,,0,,0,702255842,6,,0,,0
+dw,public,eng_kpi_2025_base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),24,,0,,17.84,79829626,,79829624,2,0.0000,,,,,,1,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,data_ops,matillion_task_history,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(end_timestamp)),500,none,1,0.70,0.00,75130805,,75109504,21301,0.0002,0.00,,,,,139,0,41,43,95.3488,0,0,0,701093676,1,,0,,0,699899024,1,,0,,0
+dw,stage,project_conversion_fact,Y,KEY(user_id),event_date_id,12297,none,3,53.84,100.00,73304423,1.01,73304424,0,0.0000,0.00,,,,,27,0,56,63,88.8888,1,1,7,703090364,13,,0,,0,702303381,10,,0,,0
+dw,stage,dtc_pr_adj_all_sap_orders,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,72837597,,72837600,0,0.0000,,,,,,4,0,8,8,100.0000,0,0,0,703343082,21,,0,,0,701860452,3,,0,,0
+dw,stage,mltv_subs_prep,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,0.00,71318822,,71318824,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,temp_image_cuts_user_cohorts_28th_gold,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,70115997,,70116000,0,0.0000,,,,,,1,0,19,21,90.4761,0,0,4,,0,,0,,0,,0,,0,,0
+dw,dim,average_sales_price,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,100.00,68871145,,68518864,352281,0.0051,,Automatic,N,2025-03-06,0,182,0,8,8,100.0000,0,0,0,703242062,13,,0,,0,702901858,10,,0,,0
+dw,public,input_tb,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,68291820,,68291824,0,0.0000,,,,,,1,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,netstock_collab_fa_forecast,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,0.00,66244230,,66244232,0,0.0000,,,,,,20,0,105,105,100.0000,0,0,0,703239967,324,,0,,0,,0,,0,,0
+dw,fact,push_notifications,"Y, AUTO(ENCODE)",AUTO(KEY(instance_id)),AUTO(SORTKEY(analytics_label)),100,lzo,1,0.12,0.18,60053434,1.00,59976008,77426,0.0012,0.00,Automatic,N,2025-03-06,0,176,0,12,12,100.0000,1,1,0,702829952,7,,0,,0,702129076,5,,0,,0
+dw,public,onboarding_onboarders_base_table,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,59566998,,59567000,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,image_search_session_360_release,Y,KEY(user_id),event_date_id,12297,none,1,89.15,0.00,58957801,1.00,58957800,1,0.0000,0.00,,,,,1,0,54,56,96.4285,0,1,1,,0,,0,,0,,0,,0,,0
+dw,stage,cut_event_for_cricut_dw,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,100.00,56202990,,56202992,0,0.0000,,,,,,9,0,35,35,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,pillar4_discovery_project_metrics,Y,KEY(user_id),event_date_id,10,az64,2,91.27,100.00,54356414,1.01,54356416,0,0.0000,0.00,,,,,20,0,24,25,96.0000,1,1,0,703221639,7,,0,,0,,0,,0,,0
+dw,analytics,client_image_search_keyword_coverage,"Y, AUTO(ENCODE)",KEY(grvar_2),grvar_2,8000,none,2,0.00,0.00,54061548,1.29,54061548,0,0.0000,0.00,,,,,0,0,0,7,0.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,font_statsig_metrics,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,49983635,,49983636,0,0.0000,,,,,,1,0,22,22,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,dimproj_test,"Y, AUTO(ENCODE)",AUTO(KEY(projectid_combined)),AUTO(SORTKEY),65535,,0,,0.00,49647173,3.78,49647172,1,0.0000,,,,,,1,0,10,10,100.0000,0,1,4,,0,,0,,0,,0,,0,,0
+dw,public,josh_number_of_pen_colors_in_project,"Y, AUTO(ENCODE)",AUTO(KEY(cut_session_id)),AUTO(SORTKEY),32,,0,,0.00,46676479,1.00,46676480,0,0.0000,,,,,,1,0,2,2,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,forward_looking_pl_scenarios,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,100.00,46096532,,46096532,0,0.0000,,Manual,N,2025-02-28,6,178,0,56,56,100.0000,0,0,1,699098225,13,,0,,0,702123648,5,,0,,0
+dw,stage,mltv_c_users_with_reg_machines_no_projects_cut,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,0.00,45589009,,45589008,1,0.0000,,,,,,5,0,2,3,66.6666,0,0,0,699681456,3,,0,,0,,0,,0,,0
+dw,stage,image_conversion_fact,Y,KEY(user_id),event_date_id,65535,none,3,61.37,100.00,43431025,1.01,43431024,1,0.0000,0.00,,,,,29,0,81,87,93.1034,0,1,8,703293673,23,,0,,0,,0,,0,,0
+dw,fact,delivery_tracking,Y,AUTO(EVEN),AUTO(SORTKEY(tracking_number)),100,zstd,1,100.00,100.00,42457789,,20779470,21678319,0.5105,0.00,Automatic,N,2025-03-06,0,229,0,12,12,100.0000,1,0,0,703306578,17,,0,,0,703306299,30,702552546,2,,0
+dw,public,as_eng_kpi_2025_test,Y,AUTO(EVEN),AUTO(SORTKEY(date_id_dim_dates)),100,az64,1,0.00,0.00,42375569,,42375568,1,0.0000,0.00,Automatic,N,2025-03-03,3,11,0,31,31,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,public,tbl_transform_project_metrics_with_cuts,Y,KEY(user_id),event_date_id,10,az64,2,93.71,100.00,41325641,1.01,41325640,1,0.0000,0.00,,,,,2,0,40,41,97.5609,1,1,0,,0,,0,,0,,0,,0,,0
+dw,public,fact_forecast_test,"Y, AUTO(ENCODE)",AUTO(KEY(week_start_date)),AUTO(SORTKEY),500,,0,,0.00,39795859,1.70,39795860,0,0.0000,,,,,,1,0,9,14,64.2857,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,event_dqm_attr_value_type_level_aggregates,Y,AUTO(EVEN),event_date_id,512,none,3,7.02,11.17,39404577,,37930424,1474153,0.0374,0.00,Manual,N,2025-02-28,6,170,0,10,16,62.5000,0,0,0,,0,,0,,0,702123565,5,,0,,0
+dw,fact,delivery_detail,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(delivery_number)),40,az64,1,67.32,100.00,38793719,,38793720,0,0.0000,0.00,Automatic,N,2025-03-05,1,543,0,17,18,94.4444,1,0,0,703314106,140,,0,,0,703352145,112,,0,,0
+dw,stage,mltv_c_users_with_reg_machines_with_projects_cut,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,37557151,,37557152,0,0.0000,,,,,,5,0,2,3,66.6666,0,0,0,699681390,3,,0,,0,,0,,0,,0
+dw,stage,base_data,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),72,,0,,0.00,36349226,,36349224,2,0.0000,,,,,,4,0,4,4,100.0000,0,0,0,703221430,54,,0,,0,703221430,18,,0,,0
+dw,fact,user_subscription_timeline,"Y, AUTO(ENCODE)",KEY(user_id),start_date,14,none,2,0.00,0.00,36287546,1.00,36287544,2,0.0000,0.00,,,,,1,0,2,4,50.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,tbl_transform_image_metrics_with_cuts,Y,KEY(user_id),event_date_id,10,az64,2,79.90,100.00,31599832,1.01,31599832,0,0.0000,0.00,,,,,2,0,20,21,95.2380,1,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,inventory_management_transaction,"Y, AUTO(ENCODE)",AUTO(EVEN),long_sku,30,none,4,72.71,100.00,31012155,,19739174,11272981,0.3635,0.00,Automatic,N,2025-03-05,1,151,0,9,11,81.8181,2,0,0,698875287,1,,0,,0,698489072,1,,0,,0
+dw,analytics,channel_sales_on_hand_v2,"Y, AUTO(ENCODE)",EVEN,AUTO(SORTKEY),255,,0,,0.00,30030702,,30030702,0,0.0000,,,,,,32,0,131,150,87.3333,0,0,0,703380551,289,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_combine_data,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,30030702,,30030702,0,0.0000,,,,,,9,0,18,24,75.0000,0,0,0,703242017,63,,0,,0,,0,,0,,0
+dw,stage,asp_base_data_sku_customer,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,28955080,,28955080,0,0.0000,,,,,,4,0,4,4,100.0000,0,0,0,702900104,14,,0,,0,,0,,0,,0
+dw,stage,asp_sales_data_sku_customer,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,28955080,,28955080,0,0.0000,,,,,,6,0,7,7,100.0000,0,0,0,702900215,21,,0,,0,702901858,5,702900374,6,,0
+dw,analytics,channel_sales_on_hand,"Y, AUTO(ENCODE)",KEY(week_start_date),week_start_date,1000,none,4,0.00,100.00,28069182,1.50,14034640,14034542,0.4999,0.00,Manual,Y,2025-02-28,6,933,0,77,78,98.7179,3,1,0,703376034,261,,0,,0,701895531,3,,0,,0
+dw,analytics,channel_sales_on_hand,"Y, AUTO(ENCODE)",KEY(week_start_date),week_start_date,1000,none,4,0.00,100.00,28069182,1.50,14034640,14034542,0.4999,0.00,Automatic,N,2025-03-06,0,933,0,77,78,98.7179,3,1,0,703376034,261,,0,,0,701895531,3,,0,,0
+dw,stage,csoh_v2_netstock_forecast,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,0.00,27887761,,27887760,1,0.0000,,,,,,1,0,6,7,85.7142,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,csoh_netstock_forecast,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,0.00,27887761,,27887760,1,0.0000,,,,,,1,0,8,9,88.8888,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,csoh_v2,"Y, AUTO(ENCODE)",EVEN,AUTO(SORTKEY),255,,0,,0.00,27270630,,27270630,0,0.0000,,,,,,3,0,129,145,88.9655,0,0,0,698326938,1,,0,,0,,0,,0,,0
+dw,stage,project_session_daily_metrics,Y,KEY(user_id),event_date_id,12297,none,2,88.33,100.00,26732295,1.01,26732296,0,0.0000,0.00,,,,,18,0,31,36,86.1111,0,1,1,699177777,8,,0,,0,,0,,0,,0
+dw,fact,forecast,"Y, AUTO(ENCODE)",AUTO(KEY(customer_number)),AUTO(SORTKEY),500,,0,,100.00,26042692,2.68,26042692,0,0.0000,,,,,,217,0,7,11,63.6363,0,1,0,,0,,0,,0,703221298,19,,0,,0
+dw,stage,image_search_user_360_release,Y,KEY(user_id),event_date_id,512,none,1,61.50,0.00,25794595,1.00,25794596,0,0.0000,0.00,,,,,1,0,46,47,97.8723,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,user_subscription_timeline_tbd,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),14,,0,,0.00,25511066,,25511066,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,retail_submission_detail,Y,AUTO(KEY(po_line_detail_id)),AUTO(SORTKEY(upc)),100,lzo,1,16.57,100.00,24476004,1.00,23680220,795784,0.0325,0.00,Automatic,N,2025-03-06,0,166,0,20,20,100.0000,1,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,image_search_events_with_conversion,Y,KEY(user_id),event_date_id,2048,none,2,69.25,100.00,22459270,1.02,22459270,0,0.0000,0.00,,,,,1,0,62,65,95.3846,0,1,8,,0,,0,,0,,0,,0,,0
+dw,stage,asp_sales_data_sku_customer_level_6,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),,54,,0,,0.00,21786248,1.23,21786248,0,0.0000,,,,,,6,0,7,7,100.0000,0,1,0,702900341,21,,0,,0,702901858,5,702900374,6,,0
+dw,stage,asp_base_data_sku_customer_level_6,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,21786248,,21786248,0,0.0000,,,,,,4,0,4,4,100.0000,0,0,0,702900244,14,,0,,0,,0,,0,,0
+dw,public,josh_total_user_ltv,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),256,,0,,0.00,20034004,,20034004,0,0.0000,,,,,,1,0,62,65,95.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dtc_pr_adj_all_fake_parent_line_allocation,"Y, AUTO(ENCODE)",AUTO(KEY(cricut_order_id)),AUTO(SORTKEY(cricut_order_id)),100,none,2,0.00,0.00,19987715,1.01,19987716,0,0.0000,0.00,,,,,10,0,34,36,94.4444,0,1,0,703343159,63,,0,,0,,0,,0,,0
+dw,dim,user_profile,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),255,none,1,99.99,100.00,19926280,1.02,19667922,258358,0.0129,0.00,Automatic,N,2025-03-06,0,704,0,54,61,88.5245,0,1,0,703390312,143,,0,,0,703356754,28,703125442,29,,0
+dw,stage,tbl_transform_user_profile,Y,AUTO(KEY(user_id)),user_id,255,none,1,74.98,100.00,19667927,1.00,19667928,0,0.0000,0.00,,,,,4,0,9,14,64.2857,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,machine_registration,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),500,none,1,100.00,100.00,19581441,1.03,19215144,366297,0.0187,115.00,Automatic,N,2025-03-06,0,378,0,9,13,69.2307,0,1,0,703317671,17,,0,,0,703365899,57,703113436,11,,0
+dw,stage,mltv_user_first_serial,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,0.00,19485339,,19485340,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_push_notification_new_metric,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),0,,0,,0.00,19411798,1.00,19411798,0,0.0000,,,,,,1,0,1,2,50.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,image_session_daily_metrics,Y,KEY(user_id),event_date_id,12297,none,1,88.59,100.00,19345678,1.01,19345678,0,0.0000,0.00,,,,,18,0,55,58,94.8275,0,1,1,699111635,12,,0,,0,703117188,2,,0,,0
+dw,public,josh_user_ltv_by_user,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),256,,0,,0.00,19306998,,19306998,0,0.0000,,,,,,1,0,16,16,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,josh_user_ltv_by_user2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),256,,0,,0.00,19306998,,19306998,0,0.0000,,,,,,1,0,16,16,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,udm_registrations_atheja_testing,"Y, AUTO(ENCODE)",KEY(user_id),evaluation_date,255,none,1,12.50,0.00,19175017,1.00,19175016,1,0.0000,0.00,,,,,6,0,8,10,80.0000,0,1,0,703163997,28,,0,,0,,0,,0,,0
+dw,stage,image_conversion_fact_v1_tbd,Y,KEY(user_id),event_date_id,65535,none,3,0.00,0.00,19108908,1.02,19108908,0,0.0000,0.00,,,,,1,0,78,84,92.8571,0,1,8,,0,,0,,0,,0,,0,,0
+dw,stage,csoh_snapshot_restore,"Y, AUTO(ENCODE)",KEY(week_start_date),week_start_date,1000,none,4,100.00,100.00,19010055,1.53,205215552,0,0.0000,0.00,,,,,1,0,77,78,98.7179,3,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,onboarding_base_events,"Y, AUTO(ENCODE)",KEY(user_id),user_id,64600,none,1,99.99,100.00,18990394,1.00,18767852,222542,0.0117,0.00,Automatic,N,2025-03-06,0,85,0,52,53,98.1132,0,1,1,702959928,92,,0,,0,702661548,4,,0,,0
+dw,analytics,onboarding_base_events,"Y, AUTO(ENCODE)",KEY(user_id),user_id,64600,none,1,99.99,100.00,18990394,1.00,18767852,222542,0.0117,0.00,Manual,Y,2025-02-28,6,85,0,52,53,98.1132,0,1,1,702959928,92,,0,,0,702661548,4,,0,,0
+dw,stage,dtc_pr_adj_all_sap_salesforce_combined,"Y, AUTO(ENCODE)",AUTO(KEY(order_number)),AUTO(SORTKEY(order_number)),50,none,1,0.00,0.00,18722778,18.45,18722778,0,0.0000,0.00,,,,,9,0,28,30,93.3333,0,1,0,703344754,56,,0,,0,,0,,0,,0
+dw,stage,dtc_pr_adj_all_filter_out_fake_parent_line,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,18722742,,18722742,0,0.0000,,,,,,8,0,24,24,100.0000,0,0,0,703343193,49,,0,,0,,0,,0,,0
+dw,analytics,csoh_snapshot_restore,"Y, AUTO(ENCODE)",AUTO(KEY(week_start_date)),AUTO(SORTKEY),1000,,0,,0.00,18664990,1.55,18664990,0,0.0000,,Manual,N,2025-02-28,6,135,0,78,78,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_mach_reg,"Y, AUTO(ENCODE)",AUTO(KEY(serial_number)),AUTO(SORTKEY),500,,0,,0.00,18355776,1.01,18355776,0,0.0000,,,,,,6,0,5,5,100.0000,0,1,0,699058768,3,,0,,0,,0,,0,,0
+dw,stage,ultv_registration,"Y, AUTO(ENCODE)",AUTO(KEY(serial_number)),AUTO(SORTKEY(serial_number)),500,none,2,0.00,0.00,18161447,1.01,18161448,0,0.0000,0.00,,,,,1,0,14,16,87.5000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,machine_reg,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,18145830,,18145830,0,0.0000,,,,,,3,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,temp_event_visit_unique_6_days_base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,100.00,17341932,,17341932,0,0.0000,,,,,,1,0,2,3,66.6666,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,temp_event_visit_unique_6_days_bkp,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,17311669,,17311668,1,0.0000,,,,,,1,0,2,3,66.6666,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,image_search_session_360,Y,KEY(user_id),event_date_id,2048,none,3,0.00,100.00,16610745,1.02,16610745,0,0.0000,0.00,,,,,1,0,60,64,93.7500,0,1,1,,0,,0,,0,,0,,0,,0
+dw,public,testing_project_3,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,15715960,,15715960,0,0.0000,,,,,,1,0,15,15,100.0000,0,0,3,,0,,0,,0,,0,,0,,0
+dw,stage,project_user_daily_metrics,Y,KEY(user_id),event_date_id,512,none,2,53.05,100.00,15493927,1.01,15493927,0,0.0000,0.00,,,,,23,0,66,68,97.0588,0,1,0,699181039,16,,0,,0,703354532,15,,0,,0
+dw,fact,user_subscription,"Y, AUTO(ENCODE)",AUTO(KEY(user_subscription_id)),AUTO(SORTKEY(expiration_date)),4000,none,1,0.00,100.00,15344475,1.00,15344475,0,0.0000,0.00,,,,,233,0,13,14,92.8571,0,1,1,703389391,60,,0,,0,,0,,0,,0
+dw,stage,subscription_plans_changes,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),255,,0,,100.00,15344475,1.00,15344475,0,0.0000,,,,,,24,0,14,14,100.0000,0,1,0,700116020,8,,0,,0,,0,,0,,0
+dw,public,postgres_sub,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,0.00,14966384,,14966384,0,0.0000,,,,,,1,0,9,9,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,user_360_subscriptions,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),269,,0,,0.00,14896456,,14896456,0,0.0000,,,,,,1,0,57,60,95.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,testing_project_2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,14296205,,14296205,0,0.0000,,,,,,1,0,14,14,100.0000,0,0,3,,0,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_20230701,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,14264384,1.02,14264384,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_user_with_null_user_details_dup_non_dup_test_01,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),22,,0,,0.00,14228633,1.00,14228633,0,0.0000,,,,,,3,0,2,3,66.6666,0,1,0,703310029,14,,0,,0,,0,,0,,0
+dw,public,onboarding_user_with_null_user_details_dup_non_dup_test_01_test,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,14093183,,14093183,0,0.0000,,,,,,1,0,2,3,66.6666,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,trial_conversion_raw_cut,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),255,,0,,0.00,14078249,1.00,14078249,0,0.0000,,,,,,1,0,17,17,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,trial_conversion_raw,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),255,none,2,0.00,0.00,14078249,1.00,14078249,0,0.0000,0.00,,,,,1,0,14,16,87.5000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_user_with_null_user_details_dup_non_dup_test_02,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),22,,0,,0.00,14052249,1.00,14052249,0,0.0000,,,,,,1,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,machine,"Y, AUTO(ENCODE)",AUTO(KEY(serial_number)),AUTO(SORTKEY(serial_number)),255,none,1,100.00,100.00,13912681,1.02,13809995,102686,0.0073,0.00,Automatic,N,2025-03-06,0,548,0,23,26,88.4615,0,1,0,703225484,24,,0,,0,703111429,34,703111429,35,,0
+dw,public,hb_ultv_ext_flag,"Y, AUTO(ENCODE)",AUTO(EVEN),user_id,11,none,1,0.00,0.00,13905885,,13905885,0,0.0000,0.00,,,,,1,0,4,5,80.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_machine_base_agg,"Y, AUTO(ENCODE)",AUTO(KEY(serial_number)),AUTO(SORTKEY),255,,0,,0.00,13781363,1.00,13781363,0,0.0000,,,,,,1,0,6,6,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,designer_metrics_image_earnings,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,100.00,13463273,,13463273,0,0.0000,,Automatic,N,2025-03-06,0,162,0,9,9,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_mach,"Y, AUTO(ENCODE)",AUTO(KEY(serial_number)),AUTO(SORTKEY(serial_number)),200,none,1,0.00,0.00,13308270,1.01,13308270,0,0.0000,0.00,,,,,6,0,11,12,91.6666,0,1,0,699059119,4,,0,,0,,0,,0,,0
+dw,stage,project_session_daily_metrics_v1_tbd,Y,KEY(user_id),event_date_id,12297,none,2,0.00,0.00,13251165,1.01,13251165,0,0.0000,0.00,,,,,1,0,32,37,86.4864,0,1,1,,0,,0,,0,,0,,0,,0
+dw,analytics,forward_looking_pl,"Y, AUTO(ENCODE)",AUTO(KEY(sap_customer_number)),AUTO(SORTKEY),2000,,0,,100.00,12943941,3.14,12943941,0,0.0000,,Manual,N,2025-02-28,6,201,0,54,55,98.1818,0,1,1,699098116,12,,0,,0,,0,,0,,0
+dw,fact,delivery,"Y, AUTO(ENCODE)",AUTO(KEY(delivery_number)),AUTO(SORTKEY(ship_to_customer_number)),35,none,1,74.97,100.00,12883557,1.00,12883557,0,0.0000,0.00,,,,,529,0,21,22,95.4545,0,1,0,703314106,70,,0,,0,,0,701851495,2,,0
+dw,public,udm_project_cuts_delta,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),1023,,0,,0.00,12881190,1.00,12881190,0,0.0000,,,,,,5,0,3,3,100.0000,0,1,1,702891556,24,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,12771345,1.00,12771345,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,stage,subscription_user_daily_subscriptions,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),255,,0,,0.00,12759109,1.00,12759109,0,0.0000,,,,,,1,0,14,14,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_machine_base_agg,"Y, AUTO(ENCODE)",AUTO(KEY(serial_number)),AUTO(SORTKEY),255,,0,,0.00,12741815,1.00,12741815,0,0.0000,,,,,,9,0,10,10,100.0000,0,1,0,699678251,4,,0,,0,,0,,0,,0
+dw,stage,ultv_mltv_deliv_base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),10,,0,,0.00,12613731,,12613731,0,0.0000,,,,,,5,0,6,6,100.0000,0,0,0,699058479,3,,0,,0,,0,,0,,0
+dw,stage,mltv_deliv_base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),10,,0,,0.00,12563615,,12563615,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,udm_cuts_delta_data,"Y, AUTO(ENCODE)",KEY(user_id),AUTO(SORTKEY),0,,0,,0.00,12440259,1.00,12440259,0,0.0000,,,,,,1,0,2,2,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_20240401,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,12189055,1.00,12189055,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_20240101,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,11957570,1.00,11957570,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,stage,onboarding_base_events,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),65535,,0,,0.00,11890091,1.00,11890091,0,0.0000,,,,,,13,0,49,49,100.0000,0,1,6,702959928,92,,0,,0,702661548,4,,0,,0
+dw,analytics,dtc_price_adjustment_allocation,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),20,,0,,100.00,11818639,,5898484,5920155,0.5009,,Manual,N,2025-02-28,6,172,0,30,47,63.8297,0,0,0,703209484,18,,0,,0,,0,,0,,0
+dw,analytics,dtc_price_adjustment_allocation,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),20,,0,,100.00,11818639,,5898484,5920155,0.5009,,Automatic,N,2025-03-05,1,172,0,30,47,63.8297,0,0,0,703209484,18,,0,,0,,0,,0,,0
+dw,stage,first_user_registered_to_cutting_machines,"Y, AUTO(ENCODE)",AUTO(KEY(serialnumber)),AUTO(SORTKEY(serialnumber)),255,none,1,0.00,0.00,11811461,1.00,11811461,0,0.0000,0.00,,,,,5,0,1,2,50.0000,0,1,0,703115182,21,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_20231001,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,11705836,1.00,11705836,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,analytics,pillar4_discovery_project_metrics_with_cuts_test,Y,KEY(user_id),event_date_id,10,az64,2,0.00,0.00,11508921,1.01,11508921,0,0.0000,0.00,Manual,Y,2025-02-28,6,135,0,40,41,97.5609,1,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,combine_sales_data,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,11497416,,11497416,0,0.0000,,,,,,7,0,13,13,100.0000,0,0,0,703221430,85,,0,,0,,0,,0,,0
+dw,stage,fwd_pl_netstock_forecast,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),72,,0,,0.00,11441627,,11441627,0,0.0000,,,,,,14,0,7,8,87.5000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,kkumar,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,67.18,11193736,,11193736,0,0.0000,,,,,,0,0,16,17,94.1176,0,0,11,,0,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_forecast,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),72,,0,,0.00,10918050,,10918050,0,0.0000,,,,,,1,0,25,25,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_20230401,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,10677962,1.00,10677962,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,public,ad_clicked,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,10270006,,10270006,0,0.0000,,,,,,17,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,tbl_transform_engagement_daily_summary_v2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,10199907,,10199907,0,0.0000,,,,,,1,0,19,19,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,tbl_transform_engagement_daily_summary_v2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,9917113,,9917113,0,0.0000,,,,,,7,0,19,19,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,machine_serialization,"Y, AUTO(ENCODE)",AUTO(EVEN),serial_number,200,none,2,2.88,22.67,9845525,,9642689,202836,0.0206,20.00,Automatic,N,2025-03-05,1,227,0,9,10,90.0000,1,0,0,702789641,17,,0,,0,,0,,0,,0
+dw,fact,price_adjustment_dtc,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,100.00,9612506,,9256744,355762,0.0370,,Automatic,N,2025-03-06,0,187,0,11,11,100.0000,0,0,3,703122849,4,,0,,0,,0,,0,,0
+dw,stage,ultv_reg_mach,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,9568846,,9568846,0,0.0000,,,,,,6,0,6,6,100.0000,0,0,0,699058753,3,,0,,0,,0,,0,,0
+dw,stage,ultv_machine_serial,"Y, AUTO(ENCODE)",AUTO(KEY(serial_number)),AUTO(SORTKEY),200,,0,,0.00,9568846,1.00,9568846,0,0.0000,,,,,,5,0,6,6,100.0000,0,1,0,699058045,3,,0,,0,,0,,0,,0
+dw,stage,mltv_serial_with_delivery_lookup,"Y, AUTO(ENCODE)",AUTO(KEY(serial_number)),AUTO(SORTKEY(serial_number)),200,none,1,0.00,0.00,9531426,1.00,9531426,0,0.0000,0.00,,,,,1,0,5,6,83.3333,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,user_360_mats_cut,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),512,,0,,0.00,9485758,1.00,9485758,0,0.0000,,,,,,1,0,88,89,98.8764,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_channel,"Y, AUTO(ENCODE)",AUTO(KEY(serial_number)),AUTO(SORTKEY(serial_number)),200,none,1,0.00,0.00,9429091,1.00,9429091,0,0.0000,0.00,,,,,1,0,9,10,90.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,image_session_daily_metrics_v1_tbd,Y,KEY(user_id),event_date_id,12297,none,1,0.00,100.00,9347572,1.02,9347572,0,0.0000,0.00,,,,,1,0,55,58,94.8275,0,1,1,,0,,0,,0,,0,,0,,0
+dw,cricut_dw,dim_color,Y,EVEN,color_code,50,zstd,1,10.80,100.00,9301986,,8869538,432448,0.0464,0.00,Automatic,N,2025-02-27,7,139,0,4,4,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,public,user_level_visit_cut_count,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),0,,0,,0.00,9073214,1.00,9073214,0,0.0000,,,,,,1,0,4,4,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,event_dqm_attr_value_level_aggregates,Y,KEY(event_date_id),event_date_id,512,none,3,12.00,100.00,8848383,1.41,8802798,45585,0.0051,0.00,Manual,Y,2025-02-28,6,182,0,9,12,75.0000,0,1,0,699086631,4,,0,,0,,0,,0,,0
+dw,analytics,event_dqm_attr_value_level_aggregates,Y,KEY(event_date_id),event_date_id,512,none,3,12.00,100.00,8848383,1.41,8802798,45585,0.0051,0.00,Automatic,N,2025-03-06,0,182,0,9,12,75.0000,0,1,0,699086631,4,,0,,0,,0,,0,,0
+dw,stage,forecast_base,"Y, AUTO(ENCODE)",AUTO(KEY(period)),AUTO(SORTKEY(period)),500,none,1,0.00,0.00,8836598,1.81,8836598,0,0.0000,0.00,,,,,9,0,88,89,98.8764,0,1,0,703217724,70,,0,,0,,0,,0,,0
+dw,stage,image_user_daily_metrics,Y,KEY(user_id),event_date_id,512,none,1,53.86,100.00,8505908,1.01,8505908,0,0.0000,0.00,,,,,23,0,54,55,98.1818,0,1,0,699121745,13,,0,,0,703317671,10,,0,,0
+dw,stage,ultv_machine_margin_clean,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,8465320,,8465320,0,0.0000,,,,,,4,0,8,8,100.0000,0,0,3,699059800,2,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_20220101,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,8116275,1.00,8116275,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,stage,sell_in_sales,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,7991158,,7991158,0,0.0000,,,,,,5,0,8,8,100.0000,0,0,0,703217907,69,,0,,0,,0,,0,,0
+dw,public,spencert_bkpf,"Y, AUTO(ENCODE)",AUTO(KEY(awkey)),AUTO(SORTKEY),120,,0,,0.00,7977867,1.00,7977867,0,0.0000,,,,,,1,0,112,112,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,asp_base_data_sku_customer_demand_plan,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,7733198,,7733198,0,0.0000,,,,,,4,0,4,4,100.0000,0,0,0,702900246,14,,0,,0,,0,,0,,0
+dw,stage,asp_sales_data_sku_customer_demand_plan,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),,54,,0,,0.00,7733198,1.18,7733198,0,0.0000,,,,,,6,0,7,7,100.0000,0,1,0,702900298,21,,0,,0,702901858,5,702900374,6,,0
+dw,stage,subscription_user_daily_user_start,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),0,,0,,0.00,7706299,1.00,7706299,0,0.0000,,,,,,1,0,2,2,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,user_360_dtc,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7541587,,7541587,0,0.0000,,,,,,1,0,50,50,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7411023,,7411023,0,0.0000,,,,,,10,0,17,26,65.3846,0,0,0,703311927,49,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_06,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7411023,,7411023,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,703310984,7,,0,,0,,0,,0,,0
+dw,analytics,onboarding_30_day_behavior_metrics,"Y, AUTO(ENCODE)",KEY(user_id),user_first_registration_date,22,none,1,0.00,0.00,7411023,1.00,7411023,0,0.0000,0.00,,,,,10,0,16,26,61.5384,0,1,0,703319143,49,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_06,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7410891,,7410891,0,0.0000,,,,,,7,0,15,22,68.1818,0,0,0,703310516,6,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_05,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7402304,,7402304,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,702531487,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_mar_05,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7402304,,7402304,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,703311449,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_05,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7402172,,7402172,0,0.0000,,,,,,8,0,15,22,68.1818,0,0,0,702527279,6,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_mar_04,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7397081,,7397081,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,702529641,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_04,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7397081,,7397081,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,701644510,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_04,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7396931,,7396931,0,0.0000,,,,,,7,0,15,22,68.1818,0,0,0,701640340,6,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_mar_03,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7391202,,7391202,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,701647971,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_03,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7391202,,7391202,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,700906341,8,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_03,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7390919,,7390919,0,0.0000,,,,,,9,0,15,22,68.1818,0,0,0,700904737,6,,0,,0,,0,,0,,0
+dw,analytics,user_app_mach_cohort,"Y, AUTO(ENCODE)",KEY(user_id),AUTO(SORTKEY),25,,0,,0.00,7383672,1.00,7383672,0,0.0000,,,,,,1,0,267,267,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_mar_02,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7383083,,7383083,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,700906493,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_02,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7383083,,7383083,0,0.0000,,,,,,7,0,15,22,68.1818,0,0,0,700076349,6,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_02,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7383083,,7383083,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,700082279,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_01,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7379680,,7379680,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,699493710,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_mar_01,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7379680,,7379680,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,700076616,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_01,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7379499,,7379499,0,0.0000,,,,,,7,0,15,22,68.1818,0,0,0,699490173,6,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_feb_28,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7377510,,7377510,0,0.0000,,,,,,8,0,17,26,65.3846,0,0,0,699493903,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_28,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7377510,,7377510,0,0.0000,,,,,,10,0,17,26,65.3846,0,0,0,698977487,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_28,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7377403,,7377403,0,0.0000,,,,,,8,0,15,22,68.1818,0,0,0,698977148,6,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_27,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7371984,,7371984,0,0.0000,,,,,,10,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_feb_27,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7371984,,7371984,0,0.0000,,,,,,9,0,17,26,65.3846,0,0,0,698978557,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_27,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7371870,,7371870,0,0.0000,,,,,,10,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_feb_26,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7363077,,7363077,0,0.0000,,,,,,11,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_26,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7363077,,7363077,0,0.0000,,,,,,10,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_26,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7362932,,7362932,0,0.0000,,,,,,10,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_25,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7357564,,7357564,0,0.0000,,,,,,1,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_feb_25,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_first_registration_date)),22,none,1,0.00,0.00,7357564,1.00,7357564,0,0.0000,0.00,,,,,10,0,16,26,61.5384,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_25,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7357467,,7357467,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_24,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7351807,,7351807,0,0.0000,,,,,,1,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_feb_24,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7351807,,7351807,0,0.0000,,,,,,1,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_stage_24,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7351642,,7351642,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_bkp_2025_feb_22,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7339903,,7339903,0,0.0000,,,,,,1,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_delta_16,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7305194,,7305194,0,0.0000,,,,,,1,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_delta_15,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7300125,,7300125,0,0.0000,,,,,,1,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_one_day_final,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7279248,,7279248,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,analytics_onboarding_30_day_behavior_metrics,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),22,,0,,0.00,7246131,1.00,7246131,0,0.0000,,,,,,1,0,17,26,65.3846,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,event_dqm_attr_list,Y,ALL,event_date_id,512,none,2,5.70,16.60,7212520,,6994086,218434,0.0302,0.00,Manual,N,2025-02-28,6,193,0,3,5,60.0000,0,0,0,699081805,3,,0,,0,,0,,0,,0
+dw,analytics,event_dqm_attr_list,Y,ALL,event_date_id,512,none,2,5.70,16.60,7212520,,6994086,218434,0.0302,0.00,Automatic,N,2025-03-04,2,193,0,3,5,60.0000,0,0,0,699081805,3,,0,,0,,0,,0,,0
+dw,public,onboarding_project_id_base_table,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,100.00,7191078,,7191078,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_corrected_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,7179778,,7179778,0,0.0000,,,,,,1,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_project_id_base_table_bkp,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7173477,,7173477,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_data_correction,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7090726,,7090726,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_prod_clone_2_2022,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,7090609,,7090609,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_20210101,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,7027518,1.00,7027518,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_prod_clone2_temp_correction,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),0,none,1,0.00,0.00,7025699,1.00,7025699,0,0.0000,0.00,,,,,1,0,15,23,65.2173,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_prod_clone2_temp,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),0,none,1,0.00,0.00,7025582,1.00,7025582,0,0.0000,0.00,,,,,1,0,15,23,65.2173,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,order_discount,"Y, AUTO(ENCODE)",AUTO(KEY(order_discount_id)),AUTO(SORTKEY),100,,0,,13.37,7003592,1.00,6625558,378034,0.0539,,Automatic,N,2025-03-06,0,159,0,9,9,100.0000,0,1,0,703123158,6,,0,,0,,0,,0,,0
+dw,fact,survey_response,"Y, AUTO(ENCODE)",AUTO(KEY(question_response_id)),AUTO(SORTKEY),2500,,0,,100.00,6836434,1.01,4272733,2563701,0.3750,,Automatic,N,2025-03-05,1,243,0,9,9,100.0000,0,1,1,702867537,11,,0,,0,,0,,0,,0
+dw,fact,monthly_revenue,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,100.00,6755880,,5309248,1446632,0.2141,,Automatic,N,2025-03-06,0,403,0,19,19,100.0000,0,0,0,703400747,98,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_sell_out,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,6660476,,6660476,0,0.0000,,,,,,7,0,12,12,100.0000,0,0,0,703241859,55,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_06_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6633408,,6633408,0,0.0000,,,,,,3,0,5,5,100.0000,0,0,0,703286669,2,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_05_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6624928,,6624928,0,0.0000,,,,,,5,0,5,5,100.0000,0,0,0,702407906,2,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_04_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6619798,,6619798,0,0.0000,,,,,,3,0,5,5,100.0000,0,0,0,701634953,2,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_03_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6614052,,6614052,0,0.0000,,,,,,5,0,5,5,100.0000,0,0,0,700845189,2,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_02_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6605972,,6605972,0,0.0000,,,,,,3,0,5,5,100.0000,0,0,0,700075326,2,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_01_new_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6602769,,6602769,0,0.0000,,,,,,3,0,5,5,100.0000,0,0,0,699465163,2,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_01_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6602769,,6602769,0,0.0000,,,,,,3,0,5,5,100.0000,0,0,0,699455549,2,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_28_new_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6600529,,6600529,0,0.0000,,,,,,4,0,5,5,100.0000,0,0,0,698939635,2,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_28_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6600529,,6600529,0,0.0000,,,,,,4,0,5,5,100.0000,0,0,0,698913762,2,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_27_new_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6595113,,6595113,0,0.0000,,,,,,6,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_27_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6595113,,6595113,0,0.0000,,,,,,4,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_26_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6586467,,6586467,0,0.0000,,,,,,6,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_25_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6580959,,6580959,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_24_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6575308,,6575308,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_full_sessions,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6504411,,6504411,0,0.0000,,,,,,1,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_sessions_test_incremental_06,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6504193,,6504193,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_sessions_test_incremental_04,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6453485,,6453485,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_testing,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,6449251,,6449251,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,project_user_daily_metrics_v1_tbd,Y,KEY(user_id),event_date_id,512,none,2,0.00,100.00,6321722,1.01,6321722,0,0.0000,0.00,,,,,1,0,60,62,96.7741,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,point_of_sale,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,100.00,5792015,,5792015,0,0.0000,,,,,,516,0,10,10,100.0000,0,0,0,703340465,47,,0,,0,,0,,0,,0
+dw,public,new_fact_pos,"Y, AUTO(ENCODE)",EVEN,AUTO(SORTKEY),382,,0,,0.00,5706108,,5706108,0,0.0000,,,,,,1,0,11,11,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,content_workflow,"Y, AUTO(ENCODE)",AUTO(KEY(workflow_log_id)),AUTO(SORTKEY(dw_load_date)),500,az64,1,3.88,7.95,5627231,1.01,5450294,176937,0.0314,0.00,,,,,185,0,9,9,100.0000,1,1,0,703250750,14,,0,,0,,0,,0,,0
+dw,stage,asp_sales_data_sku_plant,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),,54,,0,,0.00,5516126,1.14,5516126,0,0.0000,,,,,,6,0,7,7,100.0000,0,1,0,702900124,21,,0,,0,702901858,5,702900374,6,,0
+dw,stage,asp_base_data_sku_plant,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,5516126,,5516126,0,0.0000,,,,,,4,0,4,4,100.0000,0,0,0,702900085,14,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_20230101,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,5425863,1.00,5425863,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_20200101,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,5345445,1.00,5345445,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_inventory,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,5128372,,5128372,0,0.0000,,,,,,7,0,12,16,75.0000,0,0,0,703241827,60,,0,,0,,0,,0,,0
+dw,stage,dtc_pr_adj_all_adjustments,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,5019554,,5019554,0,0.0000,,,,,,4,0,8,8,100.0000,0,0,2,703342927,21,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_b0,"Y, AUTO(ENCODE)",AUTO(EVEN),revenue_month,25,none,3,0.00,0.00,4979940,,4979940,0,0.0000,0.00,,,,,7,0,11,14,78.5714,0,0,0,703209481,39,,0,,0,,0,,0,,0
+dw,public,hb_ultv_temp,"Y, AUTO(ENCODE)",AUTO(EVEN),user_id,11,none,1,0.00,0.00,4960435,,4960435,0,0.0000,0.00,,,,,1,0,3,4,75.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_push_notification_new_metric_batch,"N, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),0,none,1,0.00,0.00,4836124,1.00,4836124,0,0.0000,0.00,,,,,3,0,0,2,0.0000,0,1,0,703295895,14,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_first_30_behaviors_final_tbl_20241022_prod_clone_2_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,4631407,,4631407,0,0.0000,,,,,,1,0,16,24,66.6666,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,mat_material,"Y, AUTO(ENCODE)",ALL,AUTO(SORTKEY),2000,,0,,4.90,4614756,,4220046,394710,0.0855,,,,,,212,0,11,21,52.3809,0,0,1,703084019,10,,0,,0,,0,,0,,0
+dw,public,onboarding_first_30_day_behaviors_temp_jv_20250117,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,4600759,,4600759,0,0.0000,,,,,,1,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_first_30_day_behaviors_temp_jv_20250117_bkp_till_17,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),22,,0,,0.00,4593645,,4593645,0,0.0000,,,,,,1,0,17,26,65.3846,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,dtc_inventory_history,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,12.10,4471985,,4425114,46871,0.0104,,Automatic,N,2025-03-06,0,153,0,27,29,93.1034,0,0,2,703197309,4,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_push_status,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),5,,0,,0.00,4471756,,4471756,0,0.0000,,,,,,1,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,onboarding_30_day_behavior_metrics_temp,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_first_registration_date)),0,none,1,0.00,0.00,4450368,1.00,4450368,0,0.0000,0.00,Manual,Y,2025-02-28,6,2,0,15,22,68.1818,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,mat_material_test,Y,ALL,AUTO(SORTKEY),2000,,0,,100.00,4414988,,4333682,81306,0.0184,,,,,,1,0,11,21,52.3809,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,quarterly_users_not_in,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),3,,0,,0.00,4362170,,4362170,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,quarterly_users,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),3,,0,,0.00,4358182,,4358182,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,monthly_renewals,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),255,,0,,0.00,4242497,1.01,4242497,0,0.0000,,,,,,4,0,6,6,100.0000,0,1,0,703334484,3,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_complete,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,4234786,,4234786,0,0.0000,,,,,,1,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,image_user_daily_metrics_v1_tbd,Y,KEY(user_id),event_date_id,512,none,1,0.00,0.00,4223332,1.01,4223332,0,0.0000,0.00,,,,,1,0,46,47,97.8723,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_project_started_on_day_0_test_17_cte,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,4152005,,4152005,0,0.0000,,,,,,1,0,3,4,75.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,onboarding_30_day_behavior_metrics_af,Y,KEY(user_id),user_first_registration_date,0,none,1,0.00,0.00,4081608,1.00,4081608,0,0.0000,0.00,Manual,Y,2025-02-28,6,135,0,16,23,69.5652,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,active_users_analysis_check_v2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,3991813,,3991813,0,0.0000,,,,,,1,0,10,10,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,analytics,event_dqm_platform_event_aggregates,Y,KEY(event_date_id),event_date_id,255,none,3,8.95,76.31,3835986,1.39,3816844,19142,0.0049,0.00,Manual,Y,2025-02-28,6,180,0,7,10,70.0000,0,1,0,699094330,4,,0,,0,,0,,0,,0
+dw,analytics,event_dqm_platform_event_aggregates,Y,KEY(event_date_id),event_date_id,255,none,3,8.95,76.31,3835986,1.39,3816844,19142,0.0049,0.00,Automatic,N,2025-03-06,0,180,0,7,10,70.0000,0,1,0,699094330,4,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_sell_in,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,3790245,,3790245,0,0.0000,,,,,,6,0,12,12,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sell_in,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,3779752,,3779752,0,0.0000,,,,,,5,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,image_cut_daily_table,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),1500,,0,,0.00,3774196,,3774196,0,0.0000,,,,,,1,0,45,54,83.3333,0,0,1,,0,,0,,0,,0,,0,,0
+dw,fact,education_lesson_result,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,3.70,3649345,,3573453,75892,0.0207,,Automatic,N,2025-03-01,5,144,0,7,8,87.5000,0,0,2,,0,,0,,0,,0,,0,,0
+dw,stage,user_events_dates,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,3597705,,3597705,0,0.0000,,,,,,4,0,4,4,100.0000,0,0,0,702895605,8,,0,,0,,0,,0,,0
+dw,public,point_of_sale,"Y, AUTO(ENCODE)",EVEN,AUTO(SORTKEY),382,,0,,0.00,3594689,,3594689,0,0.0000,,,,,,6,0,11,11,100.0000,0,0,0,703340465,47,,0,,0,,0,,0,,0
+dw,stage,fact_subscription_survey_level_2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,100.00,3306662,,3306662,0,0.0000,,,,,,48,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sales_flash_union_status,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),150,,0,,0.00,3306199,,3306199,0,0.0000,,,,,,9,0,19,19,100.0000,0,0,0,703201238,20,,0,,0,,0,,0,,0
+dw,analytics,sales_flash,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),250,,0,,100.00,3306199,,3306199,0,0.0000,,Manual,N,2025-02-28,6,5823,0,37,37,100.0000,0,0,0,703402656,2984,,0,,0,,0,,0,,0
+dw,analytics,onboarding_first_30_behaviors_tbl,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),0,,0,,0.00,3298914,1.00,3298914,0,0.0000,,Manual,N,2025-02-28,6,2,0,12,18,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,product_inventory_actual,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),18,,0,,0.00,3228575,,3228575,0,0.0000,,,,,,10,0,10,10,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,onboarding_first_30_behaviors_tbl_bkp,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),0,,0,,0.00,3215862,1.00,3215862,0,0.0000,,Manual,N,2025-02-28,6,2,0,12,18,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,member_care_call_log,"Y, AUTO(ENCODE)",AUTO(KEY(call_id)),AUTO(SORTKEY),5000,,0,,0.76,3052478,1.03,3023352,29126,0.0095,,Automatic,N,2025-03-06,0,168,0,117,117,100.0000,0,1,3,,0,,0,,0,,0,,0,,0
+dw,stage,sales_flash_digital,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),150,,0,,0.00,3038373,,3038373,0,0.0000,,,,,,8,0,19,19,100.0000,0,0,0,703200823,20,,0,,0,,0,,0,,0
+dw,public,hb_subscription_kpi_t1,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),0,,0,,0.00,2994651,1.01,2994651,0,0.0000,,,,,,1,0,2,2,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_subscription_kpi_t2,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),0,,0,,0.00,2994651,1.01,2994651,0,0.0000,,,,,,1,0,3,3,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,guid_user_q4_metrics_review_sridurga,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,2919407,,2919407,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,connected_machine_test,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),3000,,0,,100.00,2860719,,1430728,1429991,0.4998,,Automatic,N,2025-03-05,1,767,0,112,122,91.8032,0,0,8,702758401,290,,0,,0,,0,,0,,0
+dw,stage,asp_sales_data,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,2730671,,2730671,0,0.0000,,,,,,9,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_19000101,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,2692503,1.01,2692503,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,public,q4_metrics_day_sridurga1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,2672764,,2672764,0,0.0000,,,,,,1,0,15,15,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,q4_metrics_guid_sridurga1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,2672764,,2672764,0,0.0000,,,,,,1,0,15,15,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,product_consumption,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(month_start_date_id)),18,none,1,100.00,100.00,2652900,,884412,1768488,0.6666,0.00,Automatic,N,2025-03-06,0,193,0,4,5,80.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_c2,"Y, AUTO(ENCODE)",AUTO(KEY(customer_number)),,25,,0,,0.00,2606492,1.67,2606492,0,0.0000,,,,,,6,0,8,8,100.0000,0,1,0,703208975,24,,0,,0,,0,,0,,0
+dw,fact,marketing_acquisition,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,5.16,2597504,,2485435,112069,0.0431,,Automatic,N,2025-03-05,1,151,0,14,14,100.0000,0,0,7,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_clone_2022,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,2462640,,2462640,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,pos_combine_all,"Y, AUTO(ENCODE)",EVEN,customer_number,72,none,3,0.00,0.00,2403145,,2403145,0,0.0000,0.00,,,,,4,0,1,8,12.5000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,cricut_dw,dim_mat_material,Y,KEY(mat_material_id),material_name,512,zstd,1,2.91,6.01,2330517,1.01,2330175,342,0.0001,0.00,,,,,139,0,12,12,100.0000,1,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,selligent_holiday_experiment_control,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,2.72,2324163,,2324163,0,0.0000,,Manual,N,2025-02-28,6,11,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,asp_sales_data_sku,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),,54,,0,,0.00,2305336,1.11,2305336,0,0.0000,,,,,,6,0,6,6,100.0000,0,1,0,702900113,15,,0,,0,702901858,5,702900374,6,,0
+dw,stage,asp_base_data_sku,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,2305336,,2305336,0,0.0000,,,,,,4,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dtc_pr_adj_all_product_adjustments_pivoted,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,2281990,,2281990,0,0.0000,,,,,,5,0,7,7,100.0000,0,0,0,703342986,7,,0,,0,,0,,0,,0
+dw,stage,user_events_app_used_country,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),65535,,0,,0.00,2249240,1.01,2249240,0,0.0000,,,,,,3,0,4,4,100.0000,0,1,2,,0,,0,,0,,0,,0,,0
+dw,public,user_project_cut_activity,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,2160375,,2160375,0,0.0000,,,,,,5,0,2,3,66.6666,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,cust_sku_list,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),18,,0,,0.00,2154360,,2154360,0,0.0000,,,,,,4,0,4,5,80.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,user_experiment_info_20240701,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,2045176,1.01,2045176,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,1,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_combine_accounts,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,2031359,,2031359,0,0.0000,,,,,,8,0,15,17,88.2352,0,0,0,703209627,4,,0,,0,,0,,0,,0
+dw,analytics,internal_pl,"Y, AUTO(ENCODE)",EVEN,AUTO(SORTKEY),100,,0,,0.00,2031359,,2031359,0,0.0000,,,,,,12,0,37,39,94.8717,0,0,0,703209683,4,,0,,0,,0,,0,,0
+dw,fact,member_care_chatbot_conversation,"Y, AUTO(ENCODE)",AUTO(KEY(conversation_id)),AUTO(SORTKEY),5000,,0,,0.00,2030630,1.00,2028572,2058,0.0010,,Automatic,N,2025-03-06,0,162,0,65,80,81.2500,0,1,17,,0,,0,,0,,0,,0,,0
+dw,analytics,master_sales_file,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,1840410,,1840410,0,0.0000,,,,,,12,0,27,27,100.0000,0,0,0,703385871,154,,0,,0,,0,,0,,0
+dw,dim,promo_calendar,"Y, AUTO(ENCODE)",ALL,long_sku,200,none,2,0.00,100.00,1836458,,1836458,0,0.0000,0.00,,,,,238,0,7,9,77.7777,0,0,0,703204683,26,,0,,0,,0,,0,,0
+dw,fact,purchasing_invoice,"Y, AUTO(ENCODE)",AUTO(KEY(invoice_number)),AUTO(SORTKEY(posting_date)),50,none,1,100.00,100.00,1716411,1.03,572174,1144237,0.6666,0.00,Automatic,N,2025-03-06,0,196,0,54,56,96.4285,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,fmr_msf_test,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,1709528,,1709528,0,0.0000,,,,,,25,0,16,18,88.8888,0,0,0,703373762,4,,0,,0,,0,,0,,0
+dw,public,josh_ultv_control_group2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),11,,0,,0.00,1624044,,1624044,0,0.0000,,,,,,1,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,josh_ultv_control_group2_us,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),11,,0,,0.00,1616343,,1616343,0,0.0000,,,,,,1,0,9,9,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_alloy_data,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),AUTO(SORTKEY),18,,0,,0.00,1580236,1.19,1580236,0,0.0000,,,,,,8,0,12,18,66.6666,0,1,0,703241772,59,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_06_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1573819,,1573819,0,0.0000,,,,,,7,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,education_enrollment,"Y, AUTO(ENCODE)",KEY(started_at),started_at,2000,none,4,0.00,0.00,1573703,1.07,1572335,1368,0.0008,0.00,,,,,144,0,10,17,58.8235,1,1,1,703353606,7,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_04_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1571891,,1571891,0,0.0000,,,,,,7,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_28_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1571137,,1571137,0,0.0000,,,,,,8,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_05_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1571103,,1571103,0,0.0000,,,,,,8,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_03_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1570708,,1570708,0,0.0000,,,,,,8,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_27_project_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1570428,,1570428,0,0.0000,,,,,,9,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_27_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1570428,,1570428,0,0.0000,,,,,,8,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_25_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1569228,,1569228,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_24_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1568909,,1568909,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_01_project_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1568560,,1568560,0,0.0000,,,,,,7,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_26_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1568051,,1568051,0,0.0000,,,,,,8,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_26_project_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1568051,,1568051,0,0.0000,,,,,,9,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_testing_with_null_02_project,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1567575,,1567575,0,0.0000,,,,,,8,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,q4_metrics_day_sridurga,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),512,,0,,0.00,1560121,1.03,1560121,0,0.0000,,,,,,1,0,15,15,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,q4_metrics_guid_sridurga,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),512,,0,,0.00,1559650,1.03,1559650,0,0.0000,,,,,,2,0,15,15,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,general_ledger,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),10,,0,,100.00,1495888,,1495888,0,0.0000,,Automatic,N,2025-03-06,0,158,0,10,10,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dl_gl_lines,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),1024,,0,,100.00,1495888,,1495888,0,0.0000,,Automatic,N,2025-03-06,0,27,0,9,9,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,stage,dtc,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,1464194,,1464194,0,0.0000,,,,,,5,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dtc_pr_adj_all_order_shipping_adjustments_pivoted,"Y, AUTO(ENCODE)",AUTO(KEY(cricut_order_id)),AUTO(SORTKEY),0,,0,,0.00,1452738,1.01,1452738,0,0.0000,,,,,,6,0,17,17,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,purchase_started,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,1437038,,1437038,0,0.0000,,,,,,19,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,entitled_product,"Y, AUTO(ENCODE)",ALL,entitled_product_id,500,none,1,99.99,100.00,1421257,,1403679,17578,0.0123,0.00,Automatic,N,2025-03-06,0,198,0,16,18,88.8888,0,0,0,702996731,7,,0,,0,,0,,0,,0
+dw,public,roxanne_outliers,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,1265302,,1265302,0,0.0000,,,,,,1,0,23,27,85.1851,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_impacted_sessions,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,1226034,,1226034,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_extension_type,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),500,,0,,0.00,1157383,1.01,1157383,0,0.0000,,,,,,1,0,7,7,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_extension_type2,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),500,,0,,0.00,1157383,1.01,1157383,0,0.0000,,,,,,1,0,8,8,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,fact_subscription_survey_level_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,100.00,1131201,,1131201,0,0.0000,,,,,,37,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,outsidecharges,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),6,,0,,100.00,1100925,,1100925,0,0.0000,,Automatic,N,2025-03-06,0,13,0,5,5,100.0000,0,0,0,702997649,26,,0,,0,702998230,35,,0,,0
+dw,stage,semisuccessful,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,1100925,,1100925,0,0.0000,,,,,,26,0,16,16,100.0000,0,0,0,703001923,21,,0,,0,,0,,0,,0
+dw,public,sub_purchase_start,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,1090053,,1090053,0,0.0000,,,,,,11,0,8,8,100.0000,0,0,0,701975946,8,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_sell_through,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,1083295,,1083295,0,0.0000,,,,,,7,0,12,12,100.0000,0,0,0,703241811,14,,0,,0,,0,,0,,0
+dw,fact,inventory_reservation_history,"Y, AUTO(ENCODE)",AUTO(KEY(res_num)),AUTO(SORTKEY),35,,0,,96.40,1040431,29.28,1001482,38949,0.0374,,Automatic,N,2025-03-06,0,191,0,25,25,100.0000,0,1,0,703388946,10,,0,,0,,0,,0,,0
+dw,stage,tbl_transform_machine_registration,Y,KEY(user_id),user_id,500,none,1,0.00,100.00,1018635,1.01,1018635,0,0.0000,0.00,,,,,2,0,9,13,69.2307,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_extension_flag,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1013409,,1013409,0,0.0000,,,,,,4,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,product_average_sale_price,"Y, AUTO(ENCODE)",AUTO(EVEN),long_sku,100,none,3,92.48,100.00,942856,,506865,435991,0.4624,0.00,Manual,Y,2025-02-28,6,34,0,12,15,80.0000,0,0,0,699138332,4,,0,,0,,0,,0,,0
+dw,analytics,product_average_sale_price,"Y, AUTO(ENCODE)",AUTO(EVEN),long_sku,100,none,3,92.48,100.00,942856,,506865,435991,0.4624,0.00,Automatic,N,2025-03-05,1,34,0,12,15,80.0000,0,0,0,699138332,4,,0,,0,,0,,0,,0
+dw,public,q3_metrics_guid_sridurga,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),512,,0,,0.00,929096,1.06,929096,0,0.0000,,,,,,1,0,15,15,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,event_dqm_attr_value_level_aggregates,Y,KEY(event_date_id),event_date_id,512,none,3,48.52,100.00,913294,3.83,913294,0,0.0000,0.00,,,,,19,0,9,12,75.0000,0,1,0,699086631,4,,0,,0,,0,,0,,0
+dw,public,onboarding_testing_with_null_2022_q7_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,911763,,911763,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,project_event_client_canvas_saved,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,895497,,895497,0,0.0000,,,,,,1,0,32,32,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dl_product_inv_monthly_source,"Y, AUTO(ENCODE)",AUTO(KEY(material)),AUTO(SORTKEY),54,,0,,0.00,845651,1.08,845651,0,0.0000,,,,,,4,0,8,8,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,product_inventory_monthly_history,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),18,,0,,100.00,845651,,845651,0,0.0000,,Manual,N,2025-02-28,6,170,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_testing_with_null_2022_q4_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,734981,,734981,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sell_in_proxy,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),250,,0,,0.00,731050,,731050,0,0.0000,,,,,,6,0,8,8,100.0000,0,0,0,703217785,23,,0,,0,,0,,0,,0
+dw,analytics,aged_inventory_snapshot,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),18,,0,,6.78,718233,,718233,0,0.0000,,Manual,N,2025-02-28,6,148,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_test_sessions_2022_till_28,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,710751,,710751,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,pillar_2_overall_traffic_sridurga_3,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,710269,,710269,0,0.0000,,,,,,1,0,21,21,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,active_users_analysis_raw_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,707178,,707178,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_testing_with_null_2022_q1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,697305,,697305,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_testing_with_null_2022_q6_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,694866,,694866,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,active_users_analysis_raw_2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,680136,,680136,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,oob_no_purchase,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,678409,,678409,0,0.0000,,,,,,17,0,10,11,90.9090,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_testing_with_null_2022_q8,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,664450,,664450,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_testing_with_null_2022_q8_new,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,664450,,664450,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_testing_with_null_2022_q3,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,663682,,663682,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_testing_with_null_2022_q2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,662298,,662298,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,netstock_collab_fa_sellin,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,648627,,648627,0,0.0000,,,,,,5,0,4,4,100.0000,0,0,0,703221737,19,,0,,0,,0,,0,,0
+dw,public,onboarding_testing_with_null_2022_q5,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,634639,,634639,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,pillar_2_overall_traffic_sridurga_2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,617491,,617491,0,0.0000,,,,,,1,0,21,21,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_amazon,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),AUTO(SORTKEY),18,,0,,0.00,611807,1.30,611807,0,0.0000,,,,,,5,0,4,10,40.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,pmt_warning_viewed,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,602354,,602354,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,purchasing,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(delivery_date)),120,az64,1,100.00,100.00,582878,,194294,388584,0.6666,0.00,Automatic,N,2025-03-06,0,211,0,15,16,93.7500,1,0,0,700966504,2,,0,,0,,0,,0,,0
+dw,public,purchase_completed,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,540073,,540073,0,0.0000,,,,,,19,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_soft_bundle_orders,"Y, AUTO(ENCODE)",AUTO(KEY(cricut_order_id)),AUTO(SORTKEY),0,,0,,0.00,451817,1.01,451817,0,0.0000,,,,,,4,0,1,1,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,user_steps,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,436145,,436145,0,0.0000,,,,,,1,0,10,10,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,fmr_artnr_sales_data_base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,419917,,419917,0,0.0000,,,,,,2,0,4,5,80.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,fmr_artnr_sales_data,"Y, AUTO(ENCODE)",AUTO(EVEN),month,54,none,1,0.00,0.00,419917,,419917,0,0.0000,0.00,,,,,7,0,4,18,22.2222,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,sub_trial_raw,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,416741,,416741,0,0.0000,,,,,,1,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,sub_purchase_complete,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,416616,,416616,0,0.0000,,,,,,8,0,8,8,100.0000,0,0,0,701919634,1,,0,,0,,0,,0,,0
+dw,data_ops,matillion_run_history_job,"Y, AUTO(ENCODE)",AUTO(KEY(runhistoryjobid)),starttime,25,none,1,0.00,0.00,409001,1.01,406251,2750,0.0067,0.00,,,,,136,0,2,7,28.5714,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,pillar_2_overall_traffic_sridurga,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,396732,,396732,0,0.0000,,,,,,1,0,21,21,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,sub_cancel_start,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),55,,0,,0.00,395254,,395254,0,0.0000,,,,,,1,0,4,5,80.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,fmr_matnr_sales_data_base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,391403,,391403,0,0.0000,,,,,,4,0,4,5,80.0000,0,0,0,701886448,3,,0,,0,,0,,0,,0
+dw,stage,fmr_matnr_sales_data,"Y, AUTO(ENCODE)",AUTO(EVEN),month,54,none,1,0.00,0.00,391403,,391403,0,0.0000,0.00,,,,,11,0,4,18,22.2222,0,0,0,703404614,20,,0,,0,,0,,0,,0
+dw,public,active_users_analysis_raw_desk_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,383282,,383282,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_stage_delta_15,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,374331,,374331,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_stage_delta_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,369862,,369862,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_stage_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,369862,,369862,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,active_users_split_counts_cube_daily,"Y, AUTO(ENCODE)",AUTO(EVEN),cube_group_id,30,none,2,0.00,0.00,363487,,363487,0,0.0000,0.00,Manual,Y,2025-02-28,6,168,0,7,9,77.7777,0,0,0,701928606,2,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_walmart_store,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),AUTO(SORTKEY),18,,0,,0.00,361915,1.23,361915,0,0.0000,,,,,,5,0,4,10,40.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_c0,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,358108,,358108,0,0.0000,,,,,,7,0,14,14,100.0000,0,0,0,703209487,7,,0,,0,,0,,0,,0
+dw,public,matched_cancel_starts,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,349919,,349919,0,0.0000,,,,,,1,0,9,10,90.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_michaels,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),AUTO(SORTKEY),18,,0,,0.00,342617,1.19,342617,0,0.0000,,,,,,5,0,4,10,40.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,zoom_historical_voice_detail,Y,AUTO(KEY(engagement_id)),AUTO(SORTKEY(engagement_id)),500,lzo,1,0.00,100.00,307140,1.01,307140,0,0.0000,0.00,,,,,59,0,32,45,71.1111,1,1,0,702616859,3,,0,,0,,0,,0,,0
+dw,stage,event_dqm_platform_event_aggregates,Y,KEY(event_date_id),event_date_id,255,none,3,48.57,100.00,297586,5.95,297586,0,0.0000,0.00,,,,,17,0,7,10,70.0000,0,1,0,699094330,4,,0,,0,,0,,0,,0
+dw,stage,dsv,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,293847,,293847,0,0.0000,,,,,,5,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,cancels_w_event,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,269574,,269574,0,0.0000,,,,,,1,0,10,11,90.9090,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sku_cust_price,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),18,,0,,0.00,268614,,268614,0,0.0000,,,,,,4,0,7,8,87.5000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,cricut_dw,dim_tool,Y,ALL,tool_name,500,zstd,1,4.15,1.48,262165,,262161,4,0.0000,0.00,,,,,138,0,5,5,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_fmr_transactions,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,256712,,256712,0,0.0000,,,,,,1,0,4,6,66.6666,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sales_flash_sold,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),150,,0,,0.00,254045,,254045,0,0.0000,,,,,,8,0,19,19,100.0000,0,0,0,703200195,7,,0,,0,,0,,0,,0
+dw,stage,event_dqm_attr_value_type_level_aggregates,Y,AUTO(EVEN),event_date_id,512,none,3,56.42,100.00,229615,,229615,0,0.0000,0.00,,,,,32,0,10,16,62.5000,0,0,0,,0,,0,,0,702123565,5,,0,,0
+dw,fact,product_inventory,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),18,,0,,100.00,225738,,75246,150492,0.6666,,Automatic,N,2025-03-06,0,706,0,25,25,100.0000,0,0,0,703250851,20,,0,,0,,0,,0,,0
+dw,stage,dl_eket,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),66,,0,,0.00,194294,,194294,0,0.0000,,,,,,16,0,70,70,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,purchase_order_line,"Y, AUTO(ENCODE)",AUTO(KEY(purchase_order_number)),AUTO(SORTKEY),120,,0,,100.00,182864,1.12,182864,0,0.0000,,,,,,152,0,45,50,90.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,dl_ekpo,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),120,,0,,0.00,182864,,182864,0,0.0000,,,,,,47,0,271,271,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,currency,"Y, AUTO(ENCODE)",ALL,abbreviation,50,none,2,100.00,100.00,181212,,60404,120808,0.6666,0.00,Automatic,N,2025-03-06,0,450,0,6,8,75.0000,0,0,0,703318543,67,,0,,0,,0,,0,,0
+dw,data_ops,matillion_task_batch_history,"Y, AUTO(ENCODE)",AUTO(KEY(id)),starttime,65535,none,1,0.00,0.00,173932,1.02,172646,1286,0.0073,0.00,,,,,135,0,16,17,94.1176,0,1,1,,0,,0,,0,,0,,0,,0
+dw,public,ipl_allocation_c0,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,168935,,168935,0,0.0000,,,,,,1,0,5,14,35.7142,0,0,0,703209487,7,,0,,0,,0,,0,,0
+dw,fact,purchase_delivery,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,100.00,165515,,82771,82744,0.4999,,Automatic,N,2025-03-06,0,158,0,5,6,83.3333,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dl_ole_db_source_po_query,"Y, AUTO(ENCODE)",AUTO(KEY(documentnumber)),AUTO(SORTKEY),10,,0,,0.00,162664,1.02,162664,0,0.0000,,,,,,4,0,2,2,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,user_events_machinefamilyselected,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,157965,1.02,157965,0,0.0000,0.00,,,,,3,0,2,3,66.6666,0,1,2,,0,,0,,0,,0,,0,,0
+dw,public,subscription_cohort_v4,"Y, AUTO(ENCODE)",AUTO(KEY(cohort_start_month)),AUTO(SORTKEY),22,,0,,0.00,147500,1.93,147500,0,0.0000,,,,,,4,0,8,8,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_target,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),AUTO(SORTKEY),18,,0,,0.00,141944,1.41,141944,0,0.0000,,,,,,5,0,4,10,40.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,customer_product,"Y, AUTO(ENCODE)",ALL,long_sku,35,none,2,94.09,100.00,138658,,73285,65373,0.4714,0.00,Automatic,N,2025-03-06,0,312,0,3,6,50.0000,0,0,0,703281457,72,,0,,0,,0,,0,,0
+dw,stage,asp_planning_customer,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,134551,,134551,0,0.0000,,,,,,8,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,user_events_machineconnected,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,2,0.00,0.00,133903,1.02,133903,0,0.0000,0.00,,,,,3,0,3,5,60.0000,0,1,1,,0,,0,,0,,0,,0,,0
+dw,analytics,marketing_project_bookmarks,"Y, AUTO(ENCODE)",AUTO(KEY(project_id)),AUTO(SORTKEY(dw_load_date)),2000,az64,1,99.67,100.00,132182,1.02,131842,340,0.0025,0.00,Automatic,N,2025-03-04,2,197,0,8,8,100.0000,1,1,1,,0,,0,,0,,0,,0,,0
+dw,analytics,marketing_project_bookmarks,"Y, AUTO(ENCODE)",AUTO(KEY(project_id)),AUTO(SORTKEY(dw_load_date)),2000,az64,1,99.67,100.00,132182,1.02,131842,340,0.0025,0.00,Manual,Y,2025-02-28,6,197,0,8,8,100.0000,1,1,1,,0,,0,,0,,0,,0,,0
+dw,public,as_eng_kpi_2025_test_quarterly,Y,AUTO(EVEN),AUTO(SORTKEY(start_of_grain)),100,az64,1,0.00,0.00,126627,,126627,0,0.0000,0.00,Automatic,N,2025-03-03,3,6,0,23,23,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,event_dqm_attr_list,Y,ALL,event_date_id,512,none,2,0.00,100.00,123460,,123460,0,0.0000,0.00,,,,,26,0,3,5,60.0000,0,0,0,699081805,3,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_walmart_ecomm,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),AUTO(SORTKEY),18,,0,,0.00,121953,1.26,121953,0,0.0000,,,,,,5,0,4,10,40.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,subscription_churn,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,115108,,115108,0,0.0000,,,,,,1,0,9,10,90.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,member_care_survey,"Y, AUTO(ENCODE)",AUTO(KEY(uid)),date_time,3000,none,1,5.61,22.02,108844,1.04,104700,4144,0.0380,0.00,Automatic,N,2025-03-05,1,160,0,37,38,97.3684,0,1,2,,0,,0,,0,,0,,0,,0
+dw,fact,cycle_count,"Y, AUTO(ENCODE)",KEY(long_sku),count_month,250,none,2,99.65,100.00,107055,1.15,107055,0,0.0000,0.00,Automatic,N,2025-03-06,0,167,0,9,11,81.8181,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,engage_non_sub_access_pass,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,96132,,96132,0,0.0000,,Manual,N,2025-02-28,6,2,0,11,11,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,historical_churn_rate,Y,AUTO(EVEN),AUTO(SORTKEY),200,,0,,2.58,92738,,91551,1187,0.0127,,Manual,N,2025-02-28,6,9,0,15,15,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,excess_obsolete_inventory,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,100.00,84526,,42263,42263,0.5000,,Automatic,N,2025-03-05,1,160,0,16,16,100.0000,0,0,0,703250851,6,,0,,0,,0,,0,,0
+dw,analytics,engagement_kpi_dashboard_cumulative_visitors_cutters_data_with_registration_year_v2,Y,AUTO(EVEN),evaluation_date,50,az64,1,0.00,0.00,83852,,83852,0,0.0000,0.00,Manual,Y,2025-02-28,6,9,0,14,14,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,user_events_oob,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),42,,0,,0.00,79294,,79294,0,0.0000,,,,,,3,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,product_inventory,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,75246,,75246,0,0.0000,,,,,,5,0,16,16,100.0000,0,0,0,703250851,20,,0,,0,,0,,0,,0
+dw,stage,dl_product_inventory_inv_source,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,74995,,74995,0,0.0000,,,,,,3,0,10,10,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,date,"Y, AUTO(ENCODE)",ALL,date_id,50,none,1,1.08,1.10,74218,,73414,804,0.0108,0.00,,,,,50243,0,39,40,97.5000,0,0,0,703405123,39282,,0,,0,,0,,0,,0
+dw,stage,dl_mver,"Y, AUTO(ENCODE)",AUTO(KEY(material)),AUTO(SORTKEY),54,,0,,0.00,73701,1.10,73701,0,0.0000,,,,,,4,0,16,16,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,user_events_oobmachineconnectiontypeselected,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY(user_id)),65535,none,1,0.00,0.00,73581,1.02,73581,0,0.0000,0.00,,,,,3,0,1,2,50.0000,0,1,1,,0,,0,,0,,0,,0,,0
+dw,stage,fmr_dates,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),13,,0,,0.00,73414,,73414,0,0.0000,,,,,,5,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,quarter_time_line,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,73414,,73414,0,0.0000,,,,,,4,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,forward_plus_actual_pl,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,100.00,70198,,70198,0,0.0000,,Manual,N,2025-02-28,6,173,0,16,16,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_royalties,"Y, AUTO(ENCODE)",AUTO(KEY(customer_number)),AUTO(SORTKEY),100,,0,,0.00,67421,1.87,67421,0,0.0000,,,,,,5,0,15,15,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,a991,"Y, AUTO(ENCODE)",AUTO(KEY(knumh)),AUTO(SORTKEY),54,,0,,0.00,66096,1.03,66096,0,0.0000,,,,,,4,0,9,9,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,a006,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),18,,0,,0.00,65187,,65187,0,0.0000,,,,,,4,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dl_product_inventory_location,"Y, AUTO(ENCODE)",AUTO(KEY(material)),AUTO(SORTKEY(material)),54,none,1,0.00,0.00,62864,1.09,62864,0,0.0000,0.00,,,,,3,0,10,11,90.9090,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,social_media_influencer_post,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,100.00,60319,,30159,30160,0.5000,,Automatic,N,2025-03-05,1,150,0,41,50,82.0000,0,0,19,,0,,0,,0,,0,,0,,0
+dw,public,josh_ultv_upgrade_group_us,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),11,,0,,0.00,60075,,60075,0,0.0000,,,,,,1,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,subscription_type_monthly,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,59941,,59941,0,0.0000,,,,,,4,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,subscription_access_pass_list,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,58524,,58524,0,0.0000,,Manual,N,2025-02-28,6,2,0,10,10,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,subscription_cohort_v20,"Y, AUTO(ENCODE)",AUTO(KEY(cohort_start_month)),AUTO(SORTKEY),50,,0,,0.00,57381,2.25,57381,0,0.0000,,,,,,5,0,8,8,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,project_cuts_per_engaged_user,Y,ALL,AUTO(SORTKEY),256,,0,,0.00,54752,,54713,39,0.0007,,Manual,N,2025-02-28,6,3,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,pmt_warning_clicked,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,53266,,53266,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_marketing,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,53062,,53062,0,0.0000,,,,,,5,0,8,10,80.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,ce10010_b_type,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,52866,,52866,0,0.0000,,,,,,1,0,92,92,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,active_users_split_counts_cube_weekly,"Y, AUTO(ENCODE)",AUTO(EVEN),cube_group_id,30,none,3,0.00,0.00,52451,,52451,0,0.0000,0.00,Manual,Y,2025-02-28,6,163,0,7,10,70.0000,0,0,0,703365288,9,,0,,0,,0,,0,,0
+dw,public,temp_2025_eng_kpi_17jan25_datapull_kpi1_domo,Y,AUTO(ALL),AUTO(SORTKEY),24,,0,,0.00,47976,,47976,0,0.0000,,,,,,1,0,9,9,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,temp_2025_eng_kpi_17jan25_datapull_domo_v2,Y,AUTO(ALL),AUTO(SORTKEY),24,,0,,0.00,47976,,47976,0,0.0000,,,,,,1,0,9,9,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sales_flash_currency,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,47219,,47219,0,0.0000,,,,,,6,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,machine_lifetime_value_customer_region,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,100.00,42025,,42025,0,0.0000,,Manual,N,2025-02-28,6,149,0,15,17,88.2352,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,42025,,42025,0,0.0000,,,,,,5,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,z_cashflow_po,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),19,,0,,100.00,39783,,39783,0,0.0000,,,,,,161,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,manual_entitlement,Y,AUTO(EVEN),AUTO(SORTKEY),18,,0,,0.00,39031,,39031,0,0.0000,,,,,,7,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,product,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),long_sku,103,none,1,100.00,100.00,38044,1.08,19021,19023,0.5000,0.00,Automatic,N,2025-03-06,0,2963,0,141,144,97.9166,0,1,0,703399564,249,,0,,0,701807193,2,,0,,0
+dw,stage,forecast_sales,"Y, AUTO(ENCODE)",AUTO(KEY(planning_cust_level_6)),AUTO(SORTKEY(planning_cust_level_6)),54,none,1,0.00,0.00,37747,6.19,37747,0,0.0000,0.00,,,,,4,0,11,14,78.5714,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,forecast_sales_base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,37747,,37747,0,0.0000,,,,,,4,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_machine_sub_margin,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,36456,,36456,0,0.0000,,,,,,5,0,6,7,85.7142,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_cuts_per_quarter,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,36419,,36419,0,0.0000,,,,,,5,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,inventory_allocation_report,Y,AUTO(EVEN),AUTO(SORTKEY),40,,0,,100.00,36017,,30247,5770,0.1602,,Manual,N,2025-02-28,6,173,0,32,32,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,inventory_allocation_report,Y,AUTO(EVEN),AUTO(SORTKEY),40,,0,,100.00,36017,,30247,5770,0.1602,,Automatic,N,2025-03-06,0,173,0,32,32,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_internal_pl,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),500,,0,,0.00,35950,,35950,0,0.0000,,,,,,5,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_final_counts_stage_15,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,35634,,35634,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_one_day_metrics,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,35403,,35403,0,0.0000,,,,,,1,0,15,22,68.1818,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dl_ekko,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),120,,0,,0.00,35302,,35302,0,0.0000,,,,,,8,0,126,126,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,purchase_order,"Y, AUTO(ENCODE)",AUTO(KEY(purchase_order_number)),AUTO(SORTKEY(purchase_order_number)),84,az64,1,0.00,100.00,35302,1.05,35302,0,0.0000,0.00,,,,,159,0,29,29,100.0000,1,1,0,,0,,0,,0,,0,,0,,0
+dw,public,as_eng_kpi_2025_test_yearly,Y,AUTO(EVEN),AUTO(SORTKEY(start_of_grain)),100,az64,1,0.00,0.00,35101,,35101,0,0.0000,0.00,Automatic,N,2025-03-03,3,9,0,23,23,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,data_ops,domo_unload_log,"Y, AUTO(ENCODE)",AUTO(ALL),AUTO(SORTKEY),50,,0,,19.07,35028,,35009,19,0.0005,,,,,,1862,0,4,4,100.0000,0,0,0,703401183,1333,,0,,0,,0,,0,,0
+dw,public,josh_ultv_control_group3_us,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),11,,0,,0.00,30711,,30711,0,0.0000,,,,,,1,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,josh_ultv_upgrade_vs_control_us_group,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),11,,0,,0.00,29373,,29373,0,0.0000,,,,,,61,0,20,20,100.0000,0,0,0,701121473,5,,0,,0,,0,,0,,0
+dw,fact,machine_vendor_performance,Y,AUTO(KEY(po_number)),AUTO(SORTKEY(po_number)),500,az64,1,100.00,100.00,28958,1.39,28958,0,0.0000,0.00,Automatic,N,2025-03-06,0,164,0,23,23,100.0000,1,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,royalty,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),18,,0,,100.00,26031,,8677,17354,0.6666,,Automatic,N,2025-03-06,0,200,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,temp_event_visit_unique_6_days_18_delta,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,21042,,21042,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,daily_active_split_counts_cube_stage,"Y, AUTO(ENCODE)",AUTO(EVEN),cube_group_id,512,none,2,0.00,0.00,20365,,20365,0,0.0000,0.00,,,,,1,0,6,8,75.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_gl_transactions,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,20109,,20109,0,0.0000,,,,,,11,0,9,9,100.0000,0,0,0,703209553,56,,0,,0,,0,,0,,0
+dw,public,save_offer_redemptions,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),50,,0,,0.00,19923,1.07,19923,0,0.0000,,,,,,1,0,22,22,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_duties_fulfillment,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,19622,,19622,0,0.0000,,,,,,5,0,9,11,81.8181,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,temp_event_visit_unique_6_days_19_delta,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,19310,,19310,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dim_product_material,"Y, AUTO(ENCODE)",AUTO(KEY(materialnumber)),AUTO(SORTKEY),120,,0,,0.00,19022,1.08,19022,0,0.0000,,,,,,6,0,49,49,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,product_base,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),AUTO(SORTKEY),120,,0,,0.00,19022,1.08,19022,0,0.0000,,,,,,8,0,112,114,98.2456,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,all_product,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),AUTO(SORTKEY),120,,0,,0.00,19022,1.08,19022,0,0.0000,,,,,,7,0,113,114,99.1228,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,ipl_duties_fulfillment,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,18162,,18162,0,0.0000,,,,,,1,0,8,11,72.7272,0,0,1,,0,,0,,0,,0,,0,,0
+dw,dim,retail_customer,"Y, AUTO(ENCODE)",AUTO(KEY(customer_number)),AUTO(SORTKEY(customer_number)),241,none,1,0.00,100.00,17192,1.07,17192,0,0.0000,0.00,,,,,1672,0,44,46,95.6521,0,1,0,703404614,345,,0,,0,,0,,0,,0
+dw,stage,customer,"Y, AUTO(ENCODE)",AUTO(KEY(customer_number)),AUTO(SORTKEY(customer_number)),50,none,1,0.00,0.00,17192,1.07,17192,0,0.0000,0.00,,,,,3,0,1,2,50.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,customer_subscription_category,"Y, AUTO(ENCODE)",ALL,customer_number,50,none,1,100.00,100.00,17192,,17178,14,0.0008,0.00,Automatic,N,2025-03-06,0,167,0,2,3,66.6666,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,planning_customer,"Y, AUTO(ENCODE)",AUTO(KEY(customer_number)),AUTO(SORTKEY(customer_number)),200,lzo,1,81.33,100.00,16254,1.07,16222,32,0.0019,0.00,Manual,Y,2025-02-28,6,855,0,8,8,100.0000,1,1,0,703323532,20,,0,,0,,0,,0,,0
+dw,analytics,planning_customer,"Y, AUTO(ENCODE)",AUTO(KEY(customer_number)),AUTO(SORTKEY(customer_number)),200,lzo,1,81.33,100.00,16254,1.07,16222,32,0.0019,0.00,Automatic,N,2025-03-05,1,855,0,8,8,100.0000,1,1,0,703323532,20,,0,,0,,0,,0,,0
+dw,dim,product_bundle,Y,ALL,parent_product_long_sku,18,none,1,0.00,100.00,16054,,16054,0,0.0000,0.00,,,,,204,0,3,4,75.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,dim_product_pricing,"Y, AUTO(ENCODE)",AUTO(KEY(materialnumber)),AUTO(SORTKEY),300,,0,,0.00,14755,1.07,14755,0,0.0000,,,,,,5,0,31,31,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_b8,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,14594,,14594,0,0.0000,,,,,,5,0,10,10,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_c4,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,14580,,14580,0,0.0000,,,,,,3,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_b4,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,14580,,14580,0,0.0000,,,,,,4,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_a1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,14490,,14490,0,0.0000,,,,,,4,0,11,11,100.0000,0,0,0,703209484,7,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_b6,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,14271,,14271,0,0.0000,,,,,,4,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_b1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,14172,,14172,0,0.0000,,,,,,4,0,11,11,100.0000,0,0,0,703209553,7,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_a3,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,14038,,14038,0,0.0000,,,,,,4,0,16,16,100.0000,0,0,0,703209484,7,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_b3,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,13561,,13561,0,0.0000,,,,,,5,0,11,11,100.0000,0,0,0,703209485,7,,0,,0,,0,,0,,0
+dw,stage,ipl_bank_charges,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,12889,,12889,0,0.0000,,,,,,5,0,16,16,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_pos_reporting,"Y, AUTO(ENCODE)",AUTO(EVEN),customer_number,40,none,1,0.00,0.00,12765,,12765,0,0.0000,0.00,,,,,4,0,4,7,57.1428,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_final_counts,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),0,,0,,0.00,12500,1.08,12500,0,0.0000,,,,,,1,0,4,4,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,retail_customer_group,"Y, AUTO(ENCODE)",ALL,customer_number,50,none,2,0.00,0.00,12296,,12296,0,0.0000,0.00,,,,,134,0,3,5,60.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,marketing_journey_action,"Y, AUTO(ENCODE)",ALL,journey_name,65535,none,1,100.00,100.00,11062,,10953,109,0.0098,0.00,Automatic,N,2025-03-06,0,182,0,14,15,93.3333,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_project_id_base_table_18_delta,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,10799,,10799,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,cricut_dw,dim_application,Y,ALL,application_id,50,none,1,5.79,6.58,10619,,10619,0,0.0000,0.00,,,,,183,0,3,4,75.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,engagement_kpi_dashboard_cumulative_visitors_cutters_cuts_data_v2,Y,AUTO(EVEN),evaluation_date,50,az64,1,0.00,0.00,9572,,9572,0,0.0000,0.00,Manual,Y,2025-02-28,6,17,0,23,23,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_project_id_base_table_19_delta,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),512,,0,,0.00,8890,,8890,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sales_flash_in_process,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),150,,0,,0.00,8788,,8788,0,0.0000,,,,,,4,0,19,19,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,ipl_freight_cost,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,8363,,8363,0,0.0000,,,,,,1,0,10,13,76.9230,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_claims,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,8284,,8284,0,0.0000,,,,,,4,0,16,16,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_freight_cost,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,8254,,8254,0,0.0000,,,,,,4,0,11,13,84.6153,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarder_home_page_test_j_01,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,7589,,7589,0,0.0000,,,,,,1,0,13,13,100.0000,0,0,4,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_fines_fees_reserve,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,7499,,7499,0,0.0000,,,,,,4,0,13,13,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_subscriptions,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,7466,,7466,0,0.0000,,,,,,1,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_ultv_ext_flag2,"Y, AUTO(ENCODE)",AUTO(EVEN),first_registration_quarter,11,none,5,0.00,0.00,7041,,7041,0,0.0000,0.00,,,,,1,0,2,7,28.5714,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_customer_discounts,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,7007,,7007,0,0.0000,,,,,,4,0,13,14,92.8571,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,6830,,6830,0,0.0000,,,,,,1,0,12,12,100.0000,0,0,4,,0,,0,,0,,0,,0,,0
+dw,analytics,sales_flash_uncategorized,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),250,,0,,0.00,6734,,6734,0,0.0000,,,,,,5,0,90,90,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,vendor,"Y, AUTO(ENCODE)",ALL,vendor_number,35,none,1,0.00,100.00,6317,,6317,0,0.0000,0.00,,,,,227,0,11,12,91.6666,0,0,0,701558731,4,,0,,0,,0,,0,,0
+dw,stage,fmr_adjustments,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),54,,0,,0.00,6232,,6232,0,0.0000,,,,,,8,0,18,18,100.0000,0,0,0,701984117,6,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_d0,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,6145,,6145,0,0.0000,,,,,,5,0,18,18,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,inventory_allocation_report_part_1,"Y, AUTO(ENCODE)",AUTO(KEY(fulfillment_center_code)),AUTO(SORTKEY),40,,0,,0.00,5771,100.00,5771,0,0.0000,,,,,,4,0,23,23,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,inventory_allocation_report_part_2,"Y, AUTO(ENCODE)",AUTO(KEY(fulfillment_center_code)),sold_to_customer_number,40,none,3,0.00,0.00,5771,100.00,5771,0,0.0000,0.00,,,,,6,0,28,31,90.3225,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_chargebacks,"Y, AUTO(ENCODE)",AUTO(KEY(long_sku)),AUTO(SORTKEY),100,,0,,0.00,5738,1.18,5738,0,0.0000,,,,,,4,0,16,16,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,pillar4_es_hva_metrics_without_x_0_3,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,5720,,5720,0,0.0000,,,,,,1,0,50,50,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_extension_allocation,"Y, AUTO(ENCODE)",AUTO(KEY(date_quarter)),AUTO(SORTKEY(date_quarter)),25,none,1,0.00,0.00,5484,23.22,5484,0,0.0000,0.00,,,,,1,0,3,4,75.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,josh_upgrade_vs_control_ltv_variance_country,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,5236,,5236,0,0.0000,,,,,,1,0,24,24,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,inventory_reservation,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),35,,0,,100.00,4666,,4666,0,0.0000,,,,,,305,0,23,23,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_f,"Y, AUTO(ENCODE)",AUTO(KEY(revenue_month)),AUTO(SORTKEY(revenue_month)),18,none,1,0.00,0.00,4647,100.00,4647,0,0.0000,0.00,,,,,4,0,5,6,83.3333,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,pillar4_es_hva_metrics_without_x_0_2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),100,,0,,0.00,4628,,4628,0,0.0000,,,,,,1,0,50,50,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,temp_engagement_kpi_2025_cumulative_data_28jan,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),7,,0,,0.00,4464,,4464,0,0.0000,,,,,,1,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,forecast_dtc,"Y, AUTO(ENCODE)",AUTO(KEY(week_start_date)),AUTO(SORTKEY(week_start_date)),100,az64,1,100.00,100.00,4230,2.86,4230,0,0.0000,0.00,Automatic,N,2025-03-06,0,175,0,5,6,83.3333,1,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_base,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,4228,,4228,0,0.0000,,,,,,1,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,machine_lifetime_value,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,4228,,4228,0,0.0000,,Manual,N,2025-02-28,6,36,0,18,18,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,subscription_access_pass_list_2_day_reg,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,4178,,4178,0,0.0000,,Manual,N,2025-02-28,6,2,0,10,10,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_cuts_per_quarter,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,4111,,4111,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,tbl_transform_material_test,Y,ALL,AUTO(SORTKEY),2000,,0,,100.00,3910,,3910,0,0.0000,,,,,,1,0,11,21,52.3809,0,0,1,,0,,0,,0,,0,,0,,0
+dw,cricut_dw,machine_registration_daily_summary,Y,EVEN,date_id,0,zstd,1,4.12,1.61,3853,,3778,75,0.0194,0.00,Automatic,N,2025-03-01,5,135,0,10,10,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,vendor_royalty_group,Y,ALL,vendor_number,25,zstd,1,0.00,0.03,3775,,3775,0,0.0000,0.00,,,,,162,0,3,3,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,subscription_user_daily_calendar,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),18,,0,,0.00,3693,,3693,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,application,"Y, AUTO(ENCODE)",ALL,AUTO(SORTKEY),50,,0,,0.00,3662,,3646,16,0.0043,,,,,,135,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,weekly_active_users_split_counts_cube_stage,"Y, AUTO(ENCODE)",AUTO(EVEN),cube_group_id,512,none,3,0.00,0.00,3239,,3239,0,0.0000,0.00,,,,,1,0,6,9,66.6666,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,visitor_raw,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),14,,0,,99.86,2928,,2928,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_d3,"Y, AUTO(ENCODE)",AUTO(KEY(revenue_month)),AUTO(SORTKEY(profit_center)),18,none,2,0.00,0.00,2874,100.00,2874,0,0.0000,0.00,,,,,4,0,7,9,77.7777,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,sap_hierarchy,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),35,,0,,0.00,2697,,2697,0,0.0000,,,,,,4,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sales_flash_open_orders,"Y, AUTO(ENCODE)",AUTO(KEY(order_number)),AUTO(SORTKEY),150,,0,,0.00,2603,23.11,2603,0,0.0000,,,,,,4,0,19,19,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,forecast_customer,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,2532,,2532,0,0.0000,,,,,,6,0,2,3,66.6666,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,quality_management_system_change,Y,AUTO(KEY(guid)),AUTO(SORTKEY),250,,0,,38.93,2380,1.23,2304,76,0.0319,,Automatic,N,2025-03-05,1,177,0,17,17,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,tbl_transform_subscription_type,Y,ALL,AUTO(SORTKEY),100,,0,,100.00,2376,,2376,0,0.0000,,,,,,1,0,14,15,93.3333,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,subscription_type,"Y, AUTO(ENCODE)",ALL,AUTO(SORTKEY),100,,0,,100.00,2376,,2376,0,0.0000,,,,,,216,0,14,15,93.3333,0,0,0,703376297,18,,0,,0,,0,,0,,0
+dw,stage,forecast_inactive_customers,"Y, AUTO(ENCODE)",AUTO(KEY(sap_customer_number)),AUTO(SORTKEY),50,,0,,0.00,2289,1.11,2289,0,0.0000,,,,,,4,0,2,2,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,fact,purchasing_inbound_detail,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),250,,0,,100.00,2285,,2285,0,0.0000,,,,,,457,0,32,32,100.0000,0,0,0,703209361,11,,0,,0,,0,,0,,0
+dw,public,tbl_stage_enggmnt_dates,"Y, AUTO(ENCODE)",AUTO(KEY(year_quarter_num)),AUTO(SORTKEY(date_id)),24,none,1,0.00,0.00,2282,2.03,2282,0,0.0000,0.00,,,,,1,0,3,4,75.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,tbl_stage_enggmnt_dates,"Y, AUTO(ENCODE)",AUTO(KEY(year_quarter_num)),date_id,24,none,1,0.00,0.00,2282,2.03,2282,0,0.0000,0.00,,,,,4,0,3,4,75.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,josh_machine_tool_usage,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,2281,,2281,0,0.0000,,,,,,1,0,6,6,100.0000,0,0,2,,0,,0,,0,,0,,0,,0
+dw,stage,sales_flash_returns_and_directimports,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),150,,0,,0.00,2278,,2278,0,0.0000,,,,,,4,0,19,19,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,data_ops,table_column_lengths,"Y, AUTO(ENCODE)",AUTO(ALL),AUTO(SORTKEY),255,,0,,0.00,2144,,2144,0,0.0000,,,,,,2,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,search_query_counts,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),15,,0,,0.00,2000,,2000,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_export,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1952,,1952,0,0.0000,,,,,,1,0,4,5,80.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,color,"Y, AUTO(ENCODE)",ALL,AUTO(SORTKEY),50,,0,,0.00,1768,,1768,0,0.0000,,,,,,135,0,9,9,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,pmt_validation_failed,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,1584,,1584,0,0.0000,,,,,,14,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_bad_debt,"Y, AUTO(ENCODE)",AUTO(KEY(customer_number)),AUTO(SORTKEY),100,,0,,0.00,1530,100.00,1530,0,0.0000,,,,,,4,0,16,16,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,analytics,access_pass_rd4_other_retailers,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,1515,,1515,0,0.0000,,Manual,N,2025-02-28,6,2,0,10,10,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,accounting_center,"Y, AUTO(ENCODE)",ALL,account_number,50,none,1,0.00,100.00,1509,,1509,0,0.0000,0.00,,,,,171,0,5,6,83.3333,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,temp_mature_content_engagement_28th_gold,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),35,,0,,0.00,1444,,1444,0,0.0000,,,,,,1,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,user_with_null_user_details_dup_non_dup,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),0,,0,,0.00,1425,1.41,1425,0,0.0000,,,,,,1,0,1,1,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_machine_margin,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,1422,,1422,0,0.0000,,,,,,4,0,8,8,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,data_quality,daily_bounds_cutitem_2024,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY(event_date)),128,az64,1,6.81,19.78,1365,,1365,0,0.0000,0.00,,,,,11,0,4,8,50.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,font_family,"Y, AUTO(ENCODE)",AUTO(KEY(font_family_id)),AUTO(SORTKEY),100,,0,,0.00,1350,1.19,1350,0,0.0000,,,,,,138,0,7,8,87.5000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_prior2019_cuts_proxy,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,1265,,1265,0,0.0000,,,,,,4,0,8,8,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_export_t2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1126,,1126,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,data_quality,daily_bounds_cutitem_2024_wip,"Y, AUTO(ENCODE)",AUTO(ALL),AUTO(SORTKEY),256,,0,,0.00,1095,,1095,0,0.0000,,,,,,1,0,4,8,50.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_final_counts_stage,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1068,,1068,0,0.0000,,,,,,1,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,fact,retail_linear_footage,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,913,,913,0,0.0000,,,,,,143,0,5,6,83.3333,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,josh_upgrade_vs_control_ltv_variance,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),11,,0,,0.00,766,,766,0,0.0000,,,,,,1,0,22,22,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,csoh_v2_customer_hierarchy,"Y, AUTO(ENCODE)",AUTO(KEY(child_customer_number)),AUTO(SORTKEY),35,,0,,0.00,765,1.28,765,0,0.0000,,,,,,6,0,4,4,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_machine_margin,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,637,,637,0,0.0000,,,,,,4,0,9,9,100.0000,0,0,2,,0,,0,,0,,0,,0,,0
+dw,dim,device,"Y, AUTO(ENCODE)",ALL,AUTO(SORTKEY),32,,0,,0.00,592,,592,0,0.0000,,,,,,135,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarder_home_test,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,580,,580,0,0.0000,,,,,,1,0,13,13,100.0000,0,0,4,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_public_n_rbo,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,534,,534,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_sellout_margin_dollars,"Y, AUTO(ENCODE)",AUTO(KEY(date_quarter)),AUTO(SORTKEY),200,,0,,0.00,534,4.59,534,0,0.0000,,,,,,1,0,8,8,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,sku_exclusivity,"Y, AUTO(ENCODE)",AUTO(KEY(customer_number)),AUTO(SORTKEY(customer_number)),50,lzo,1,0.00,100.00,528,27.89,528,0,0.0000,0.00,,,,,154,0,6,6,100.0000,1,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,targeted_content,"Y, AUTO(ENCODE)",AUTO(KEY(id)),AUTO(SORTKEY),500,,0,,100.00,466,1.51,466,0,0.0000,,,,,,156,0,26,29,89.6551,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,event,"Y, AUTO(ENCODE)",AUTO(KEY(event_name)),AUTO(SORTKEY(dw_load_date)),100,az64,1,0.00,0.00,455,1.63,455,0,0.0000,0.00,,,,,135,0,6,6,100.0000,1,1,0,,0,,0,,0,,0,,0,,0
+dw,public,targeted_content,"Y, AUTO(ENCODE)",AUTO(KEY(id)),AUTO(SORTKEY),500,,0,,0.00,425,1.63,425,0,0.0000,,,,,,2,0,9,10,90.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_ultv_ext_flag3,"Y, AUTO(ENCODE)",AUTO(EVEN),control_quarter,11,none,4,0.00,0.00,424,,424,0,0.0000,0.00,,,,,1,0,2,6,33.3333,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_a2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,418,,418,0,0.0000,,,,,,4,0,16,16,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,phase_3_sku_list,"Y, AUTO(ENCODE)",AUTO(ALL),AUTO(SORTKEY),0,,0,,100.00,402,,402,0,0.0000,,,,,,27,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_b2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,369,,369,0,0.0000,,,,,,5,0,11,11,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,access_pass_rd4_dtc,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),255,,0,,0.00,352,1.41,352,0,0.0000,,Manual,N,2025-02-28,6,2,0,7,7,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_sellout,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),4,,0,,0.00,336,,336,0,0.0000,,,,,,4,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,temp_2025_eng_kpi_17jan25_datapull_v2,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),30,,0,,32.48,314,,314,0,0.0000,,,,,,1,0,9,9,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,event_dqm_whitelisted_events,Y,AUTO(KEY(event_name)),event_name,255,none,2,0.00,0.00,306,1.81,306,0,0.0000,0.00,Manual,Y,2025-02-28,6,212,0,1,3,33.3333,0,1,0,,0,,0,,0,,0,,0,,0
+dw,data_ops,public_table_meta_data,"Y, AUTO(ENCODE)",AUTO(ALL),AUTO(SORTKEY),200,,0,,100.00,302,,302,0,0.0000,,,,,,32,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,traffic_events,"Y, AUTO(ENCODE)",KEY(event_name),quarter_start_date,65535,none,2,0.00,0.00,287,1.59,287,0,0.0000,0.00,,,,,3,0,5,7,71.4285,0,1,1,,0,,0,,0,,0,,0,,0
+dw,public,hb_subscription_kpi_sub_count2,"Y, AUTO(ENCODE)",AUTO(EVEN),date_id,0,none,3,0.00,0.00,262,,262,0,0.0000,0.00,,,,,1,0,2,5,40.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,temp_2025_eng_kpi_17jan25_datapull,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),30,,0,,5.38,223,,223,0,0.0000,,,,,,1,0,9,9,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_country,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),200,,0,,0.00,220,,220,0,0.0000,,,,,,4,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,country,Y,ALL,AUTO(SORTKEY(country_id)),200,zstd,1,0.00,0.00,220,,220,0,0.0000,0.00,,,,,460,0,10,10,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,data_ops,domo_s3_object_list,"Y, AUTO(ENCODE)",AUTO(ALL),AUTO(SORTKEY),255,,0,,100.00,216,,216,0,0.0000,,,,,,25,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_events_sessions_14_1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,100.00,214,,214,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,as_temp_2025_eng_kpi_19feb25_datapull_domo,Y,AUTO(ALL),AUTO(SORTKEY),9,,0,,0.00,198,,198,0,0.0000,,,,,,1,0,53,53,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,member_care_employee_history,"Y, AUTO(ENCODE)",AUTO(KEY(email_address)),AUTO(SORTKEY(email_address)),2000,lzo,1,0.00,0.00,190,1.71,190,0,0.0000,0.00,,,,,136,0,19,19,100.0000,1,1,18,,0,,0,,0,,0,,0,,0
+dw,data_ops,job_dependencies,"Y, AUTO(ENCODE)",AUTO(ALL),AUTO(SORTKEY),255,,0,,100.00,185,,122,63,0.3405,,Automatic,N,2025-03-06,0,6094,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,target_content,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,170,,170,0,0.0000,,,,,,1,0,25,28,89.2857,0,0,11,,0,,0,,0,,0,,0,,0
+dw,analytics,dim_targeted_content,"Y, AUTO(ENCODE)",AUTO(KEY(id)),AUTO(SORTKEY),500,,0,,0.00,170,2.77,170,0,0.0000,,Manual,N,2025-02-28,6,136,0,26,29,89.6551,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,image_category,Y,ALL,category_id,511,lzo,1,0.00,0.00,151,,151,0,0.0000,0.00,,,,,20,0,2,2,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,target_content_s3,"Y, AUTO(ENCODE)",AUTO(KEY(id)),AUTO(SORTKEY),65535,,0,,0.00,146,3.30,146,0,0.0000,,,,,,1,0,25,28,89.2857,0,1,4,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_external_margin,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,144,,144,0,0.0000,,,,,,4,0,6,6,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_sell_out_margin,"Y, AUTO(ENCODE)",AUTO(KEY(date)),AUTO(SORTKEY),2000,,0,,0.00,144,2.80,144,0,0.0000,,,,,,4,0,7,7,100.0000,0,1,1,,0,,0,,0,,0,,0,,0
+dw,public,hb_export_y,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,141,,141,0,0.0000,,,,,,1,0,4,5,80.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,marketing_communication_state,"Y, AUTO(ENCODE)",ALL,type,2000,none,1,100.00,100.00,140,,140,0,0.0000,0.00,Automatic,N,2025-03-06,0,167,0,5,6,83.3333,0,0,1,,0,,0,,0,,0,,0,,0
+dw,public,hb_subscription_kpi_new_users2,"Y, AUTO(ENCODE)",AUTO(EVEN),reg_year,0,none,2,0.00,0.00,135,,135,0,0.0000,0.00,,,,,1,0,2,4,50.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,survey_question,"Y, AUTO(ENCODE)",AUTO(KEY(question_id)),AUTO(SORTKEY(dw_load_date)),500,az64,1,97.77,100.00,135,14.50,69,66,0.4888,0.00,Automatic,N,2025-03-06,0,194,0,9,10,90.0000,1,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,sale_type,"Y, AUTO(ENCODE)",ALL,sales_document_type_code,20,none,1,0.00,100.00,133,,133,0,0.0000,0.00,,,,,197,0,3,4,75.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,as_temp_2025_eng_kpi_19feb25_datapull_domo_retention,Y,AUTO(ALL),AUTO(SORTKEY),9,,0,,0.00,132,,132,0,0.0000,,,,,,1,0,53,53,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_sub_count,"Y, AUTO(ENCODE)",AUTO(KEY(date_id)),AUTO(SORTKEY),0,,0,,0.00,131,2.50,131,0,0.0000,,,,,,4,0,3,3,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_mltv_c_sub_count,"Y, AUTO(ENCODE)",AUTO(KEY(date_id)),AUTO(SORTKEY),0,,0,,0.00,131,2.50,131,0,0.0000,,,,,,4,0,3,3,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_g0_g1,"Y, AUTO(ENCODE)",AUTO(KEY(revenue_month)),AUTO(SORTKEY(customer_number)),50,none,3,0.00,0.00,119,100.00,119,0,0.0000,0.00,,,,,4,0,12,15,80.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,inow,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,0.00,118,,118,0,0.0000,,,,,,4,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,eng_kpi_2025_test_1,"Y, AUTO(ENCODE)",AUTO(EVEN),selector,23,none,3,0.00,0.00,117,,117,0,0.0000,0.00,,,,,1,0,3,6,50.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sales_flash_order_blocked,"Y, AUTO(ENCODE)",AUTO(KEY(order_line_number)),AUTO(SORTKEY),150,,0,,0.00,112,2.00,112,0,0.0000,,,,,,4,0,19,19,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,onboarding_jv_events_sessions_14,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),255,,0,,100.00,107,,107,0,0.0000,,,,,,1,0,5,5,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,statsig_experiment_governance_table,"Y, AUTO(ENCODE)",AUTO(ALL),AUTO(SORTKEY),1000,,0,,100.00,100,,100,0,0.0000,,,,,,3,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_prior2019_cuts_proxy,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),25,,0,,0.00,95,,95,0,0.0000,,,,,,1,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,user_with_null_user_details_dup_non_dup_test_01,"Y, AUTO(ENCODE)",AUTO(KEY(user_id)),AUTO(SORTKEY),0,,0,,0.00,93,3.00,93,0,0.0000,,,,,,1,0,1,1,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_timeline,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,74,,74,0,0.0000,,,,,,4,0,1,1,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_internal_subs,"Y, AUTO(ENCODE)",AUTO(KEY(date)),AUTO(SORTKEY),0,,0,,0.00,73,2.80,73,0,0.0000,,,,,,4,0,2,2,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_external_subs,"Y, AUTO(ENCODE)",AUTO(KEY(date)),AUTO(SORTKEY),0,,0,,0.00,73,2.80,73,0,0.0000,,,,,,4,0,2,2,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_mltv_c_internal_subs,"Y, AUTO(ENCODE)",AUTO(KEY(date)),AUTO(SORTKEY),0,,0,,0.00,73,2.80,73,0,0.0000,,,,,,4,0,5,5,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_export_t,"Y, AUTO(ENCODE)",AUTO(KEY(cut_quarter)),,0,,0,,0.00,73,4.75,73,0,0.0000,,,,,,1,0,3,3,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_margin_per_user_by_month,"Y, AUTO(ENCODE)",AUTO(KEY(date)),date,0,none,1,0.00,0.00,73,2.80,73,0,0.0000,0.00,,,,,4,0,4,5,80.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_mltv_c_external_subs,"Y, AUTO(ENCODE)",AUTO(KEY(date)),AUTO(SORTKEY),0,,0,,0.00,72,2.80,72,0,0.0000,,,,,,4,0,2,2,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,ultv_sub_margin,"Y, AUTO(ENCODE)",AUTO(KEY(date)),AUTO(SORTKEY),0,,0,,0.00,72,2.80,72,0,0.0000,,,,,,4,0,7,7,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,retailer,Y,ALL,retailer_id,3000,zstd,2,0.00,5.56,72,,72,0,0.0000,0.00,,,,,317,0,9,9,100.0000,2,0,1,,0,,0,,0,,0,,0,,0
+dw,public,hb_subscription_kpi_sub_rev,"Y, AUTO(ENCODE)",AUTO(KEY(date)),AUTO(SORTKEY),0,,0,,0.00,72,2.80,72,0,0.0000,,,,,,1,0,3,3,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,dim_product_ecp_group_one_desc,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),120,,0,,0.00,71,,71,0,0.0000,,,,,,4,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,tbl_temp_previous_month_end_dates,"Y, AUTO(ENCODE)",AUTO(EVEN),last_day_of_month,0,none,1,0.00,0.00,68,,68,0,0.0000,0.00,,,,,4,0,1,2,50.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,content_workflow_rejection_reason,"Y, AUTO(ENCODE)",ALL,AUTO(SORTKEY),500,,0,,100.00,68,,34,34,0.5000,,Automatic,N,2025-03-05,1,167,0,3,7,42.8571,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,tbl_temp_previous_month_end_dates,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,67,,67,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,currency_conversion,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),3,,0,,0.00,60,,60,0,0.0000,,,,,,4,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,contractual_entitlements,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),35,,0,,0.00,57,,57,0,0.0000,,,,,,3,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,rejection_reason,"Y, AUTO(ENCODE)",AUTO(KEY(rejection_reason_code)),AUTO(SORTKEY(rejection_reason_code)),40,none,1,0.00,100.00,56,2.75,56,0,0.0000,0.00,,,,,185,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,stage,mltv_c_am_margin,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),2000,,0,,0.00,50,,50,0,0.0000,,,,,,4,0,5,5,100.0000,0,0,1,,0,,0,,0,,0,,0,,0
+dw,dim,shipping_service,"Y, AUTO(ENCODE)",ALL,shipping_service_id,100,none,1,100.00,100.00,48,,48,0,0.0000,0.00,Automatic,N,2025-03-06,0,167,0,6,8,75.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,region,Y,ALL,region_id,100,zstd,1,0.00,100.00,47,,47,0,0.0000,0.00,,,,,135,0,3,3,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sell_in_msf_adjustment,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),10,,0,,0.00,39,,39,0,0.0000,,,,,,4,0,12,12,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,designer_metrics_payments,"Y, AUTO(ENCODE)",AUTO(KEY(payment_id)),AUTO(SORTKEY(dw_load_date)),255,az64,1,100.00,100.00,35,8.00,35,0,0.0000,0.00,Automatic,N,2025-03-06,0,171,0,24,26,92.3076,1,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,content_workflow_status,"Y, AUTO(ENCODE)",ALL,AUTO(SORTKEY),500,,0,,100.00,32,,16,16,0.5000,,Automatic,N,2025-03-05,1,176,0,7,7,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,aditya_temp_2025_eng_kpi_17jan25_datapull_domo,Y,AUTO(ALL),AUTO(SORTKEY),9,,0,,0.00,32,,32,0,0.0000,,,,,,1,0,53,53,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,temp_2025_eng_kpi_17jan25_datapull_domo,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),9,,0,,0.00,32,,32,0,0.0000,,,,,,1,0,53,53,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,target_content_postgresdb,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),65535,,0,,0.00,27,,27,0,0.0000,,,,,,1,0,25,28,89.2857,0,0,11,,0,,0,,0,,0,,0,,0
+dw,stage,ipl_allocation_b7,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),50,,0,,0.00,27,,27,0,0.0000,,,,,,4,0,6,6,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,delivery_block,Y,ALL,delivery_block,40,zstd,1,0.00,100.00,27,,27,0,0.0000,0.00,,,,,169,0,3,3,100.0000,1,0,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_subscription_kpi_sub_count1,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,24,,24,0,0.0000,,,,,,1,0,1,3,33.3333,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,tbl_temp_previous_quarter_end_dates,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),24,,0,,0.00,23,,23,0,0.0000,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,tbl_temp_previous_quarter_end_dates,"Y, AUTO(ENCODE)",AUTO(EVEN),year_quarter_num,24,none,1,0.00,0.00,23,,23,0,0.0000,0.00,,,,,4,0,1,2,50.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,fulfillment_center,Y,ALL,fulfillment_center_code,60,none,1,0.00,100.00,22,,22,0,0.0000,0.00,,,,,281,0,6,7,85.7142,0,0,0,,0,,0,,0,,0,,0,,0
+dw,data_ops,s3_unload_exceptions,"Y, AUTO(ENCODE)",AUTO(ALL),AUTO(SORTKEY),500,,0,,0.00,20,,20,0,0.0000,,,,,,13,0,4,4,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,data_ops,table_maintenance_blacklist,"Y, AUTO(ENCODE)",AUTO(ALL),AUTO(SORTKEY),500,,0,,5.00,20,,20,0,0.0000,,,,,,90,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,netstock_collab_fa_cycles,"Y, AUTO(ENCODE)",AUTO(KEY(as_of_date)),AUTO(SORTKEY),0,,0,,0.00,19,5.00,19,0,0.0000,,,,,,7,0,1,1,100.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,dial_position,"Y, AUTO(ENCODE)",ALL,AUTO(SORTKEY),25,,0,,100.00,17,,17,0,0.0000,,Automatic,N,2025-03-06,0,167,0,3,3,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,cricut_dw,dim_device,Y,ALL,device_id,100,none,1,66.66,100.00,15,,15,0,0.0000,0.00,Automatic,N,2025-02-27,7,139,0,7,8,87.5000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_subscription_kpi_new_users,"Y, AUTO(ENCODE)",AUTO(KEY(reg_year)),reg_year,0,none,1,0.00,0.00,13,100.00,13,0,0.0000,0.00,,,,,1,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,shipping_lead_time,"Y, AUTO(ENCODE)",ALL,customer_number,10,none,1,0.00,0.00,12,,12,0,0.0000,0.00,,,,,8,0,1,2,50.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,_10_user,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,,10,,,,,,,,,,1,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,eng_kpi_2025_base_pt3,"Y, AUTO(ENCODE)",AUTO(KEY(year)),year,0,none,1,0.00,0.00,6,100.00,6,0,0.0000,0.00,,,,,1,0,3,4,75.0000,0,1,0,,0,,0,,0,,0,,0,,0
+dw,public,hb_subscription_kpi_sub_rev2,"Y, AUTO(ENCODE)",AUTO(KEY(year)),,0,,0,,0.00,6,100.00,6,0,0.0000,,,,,,1,0,2,3,66.6666,0,1,0,,0,,0,,0,,0,,0,,0
+dw,dim,breakout_type,"Y, AUTO(ENCODE)",ALL,breakout_type_id,50,none,1,0.00,0.00,6,,6,0,0.0000,0.00,,,,,335,0,2,3,66.6666,0,0,0,,0,,0,,0,,0,,0,,0
+dw,dim,status,"Y, AUTO(ENCODE)",ALL,code,60,none,1,0.00,100.00,4,,4,0,0.0000,0.00,,,,,166,0,3,4,75.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,analytics,test_schema_move_jv_2,Y,AUTO(EVEN),AUTO(SORTKEY),2,,0,,0.00,2,,2,0,0.0000,,Manual,N,2025-02-28,6,2,0,2,2,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,sales_flash_sap_bundles,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),150,,0,,0.00,2,,2,0,0.0000,,,,,,4,0,19,19,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,public,xt01_0fe2cf4a_13f5_4178_b091_4505a7fee045_2_connect_checkselect,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1,,1,0,0.0000,,,,,,1,0,1,1,100.0000,0,0,0,,0,,0,,0,,0,,0,,0
+dw,stage,last_updated_date_image_group_royalty,"Y, AUTO(ENCODE)",AUTO(EVEN),AUTO(SORTKEY),0,,0,,0.00,1,,1,0,0.0000,,,,,,28,0,1,1,100.0000,0,0,0,,0,,0,,0,,0,,0,,0

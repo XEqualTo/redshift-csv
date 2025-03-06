@@ -1,0 +1,7 @@
+dbname,namespace,table_name,type,latest_status,eventtime
+dw,fact,zoom_historical_voice_detail,sortkey,Abort:This table is already the recommended style.,2025-03-04 17:58:20.288316
+dw,public,as_eng_kpi_2025_test,sortkey,Abort:This table is already the recommended style.,2025-03-04 15:10:11.380159
+dw,public,as_eng_kpi_2025_test_quarterly,sortkey,Abort:This table is already the recommended style.,2025-03-04 15:10:11.383197
+dw,public,as_eng_kpi_2025_test_yearly,sortkey,Abort:This table is already the recommended style.,2025-03-04 14:58:12.783587
+dw,public,tbl_transform_image_cut_daily_v2,distkey,Skipped:Retry exceeds the maximum limit for a table.,2025-02-27 07:18:11.215105
+dw,public,tbl_transform_image_cut_daily_v2,sortkey,Abort:This table is already the recommended style.,2025-02-27 07:27:07.216976

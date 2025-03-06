@@ -1,0 +1,4 @@
+workloadtype,perc_of_total_workload,perc_duration_in_day,total_query_minutes_in_day,workload_exec_sec_avg,workload_exec_sec_min,workload_exec_sec_max,query_cnt,scan_bytes_avg
+Small,21.2200,84.4,1216,0.680,0.000,1744.946,819705,1686479
+Meduim,34.6200,86.6,1248,1.110,0.000,15169.853,81354,1344304139
+Large,44.1400,78.3,1127,1.415,0.000,86408.882,1792,3794531416

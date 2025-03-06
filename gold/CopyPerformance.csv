@@ -1,0 +1,8 @@
+copy_date,aws_region,s3_bucket,file_format,dbname,table_id,namespace,table_name,rows_inserted,files_scanned,mb_scanned,avg_files_per_copy,avg_file_size_mb,files_compressed,cluster_slice_count,avg_used_slice_count,no_of_copy,sample_query,scan_rate_kbps,insert_rate_rows_per_second,total_copy_time_secs,avg_copy_time_secs,total_compression_time_secs,avg_compression_time_secs,total_transfer_retries,distinct_error_files,load_error_count
+2025-03-01,us-west-2,gold-data-domo,Text,dw,107273338,fact,statsig_exposures,159622472,128,7388,128.000,57.718,Y,32,32,1,699218391,3323.0413,13438142.1471,80.3756,80.3756,0.0000,0.0000,0,0,0
+2025-02-28,us-west-2,gold-data-domo,Text,dw,107273338,fact,statsig_exposures,159622472,128,7355,128.000,57.460,Y,32,32,1,698459810,3295.8941,8137427.7185,77.6313,77.6313,0.0000,0.0000,1,128,128
+2025-03-06,us-west-2,gold-data-domo,Text,dw,107273338,fact,statsig_exposures,159622472,128,7388,128.000,57.718,Y,32,32,1,702805738,3343.2020,5939549.1118,75.1790,75.1790,0.0000,0.0000,0,0,0
+2025-03-03,us-west-2,gold-data-domo,Text,dw,107273338,fact,statsig_exposures,159622472,128,7388,128.000,57.718,Y,32,32,1,700538218,3622.1212,9619688.4166,74.3293,74.3293,0.0000,0.0000,0,0,0
+2025-03-02,us-west-2,gold-data-domo,Text,dw,107273338,fact,statsig_exposures,159622472,128,7388,128.000,57.718,Y,32,32,1,699856151,3537.2678,17062795.8244,68.8333,68.8333,0.0000,0.0000,0,0,0
+2025-03-05,us-west-2,gold-data-domo,Text,dw,107273338,fact,statsig_exposures,159622472,128,7388,128.000,57.718,Y,32,32,1,702093756,4137.5016,13244038.1594,62.5530,62.5530,0.0000,0.0000,0,0,0
+2025-03-04,us-west-2,gold-data-domo,Text,dw,107273338,fact,statsig_exposures,159622472,128,7388,128.000,57.718,Y,32,32,1,701308896,4579.3950,13794779.6875,56.4183,56.4183,0.0000,0.0000,0,0,0
