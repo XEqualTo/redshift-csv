@@ -1,0 +1,5 @@
+node_type,node,slice_count,storage_utilization_pct,storage_capacity_gb,storage_used_gb
+unknown,0,4,44.3500,128000.000000,56779.600000
+unknown,1,4,46.1000,128000.000000,59019.043000
+unknown,2,4,44.6200,128000.000000,57125.085000
+unknown,3,4,45.4400,128000.000000,58173.727000

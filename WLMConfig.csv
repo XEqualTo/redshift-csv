@@ -1,0 +1,5 @@
+wlm_mode,service_class_id,service_class_category,queue_name,slots,query_working_memory_mb_per_slot,cluster_memory_pct,query_timeout,concurrency_scaling,queue_priority,qmr_rule_count,is_queue_evictable,qmr_rule,condition
+auto,100,Auto WLM,Default queue,auto,auto,auto,0,off,Normal,0,N,,(querytype: any)
+auto,14,SQA,Short query queue,6,264,auto,0,off,Normal,0,N,,
+auto,15,Redshift Maintenance,Service class for vacuum/analyze,1,10,auto,0,off,Normal,0,N,,(system user) and (query group: maintenance)
+auto,5,Superuser,Service class for super user,1,3701,auto,0,off,Normal,0,N,,(super user) and (query group: superuser)

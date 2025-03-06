@@ -1,0 +1,1 @@
+dbname,namespace,mview_name,is_stale,state,state_desc,autorewrite,autorefresh,mv_state,event_desc,event_starttime,refresh_db_username,refresh_status,refresh_type,refresh_starttime,refresh_endtime,refresh_duration_secs
