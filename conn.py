@@ -2,11 +2,11 @@ import psycopg2
 import csv
 import json
 
-HOST = "prd-redshift-cluster.c2n7vjaileo6.us-west-2.redshift.amazonaws.com"
-PORT = "5439" 
-DATABASE = "dev"
-USER = "testadmin"
-PASSWORD = "Admin12345"
+HOST = "XXXXX"
+PORT = "XXX" 
+DATABASE = "XXX"
+USER = "XXX"
+PASSWORD = "XXXX"
 
 json_filename = "./config.json"
 try:
